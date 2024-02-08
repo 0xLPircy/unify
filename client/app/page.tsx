@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Navbar } from './_components';
 import Link from 'next/link';
-import { Display1, Display2, Hero, HeroBottom } from '@/app/_container/index';
+import { Display1, Display2, Hero, HeroBottom } from '@/app/_container';
 
 export default function Home() {
   return (
