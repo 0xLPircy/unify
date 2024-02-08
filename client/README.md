@@ -1,3 +1,22 @@
+Dynamic Done
+
+- Navbar
+  - address on login, getstarted, create, loader
+  - ens on dashboard my nft, chat
+  - notification amount
+  - notifications
+
+Left
+
+- Navbar
+  - populate notifs in constants
+  - look through the chains for notifs
+
+To Ask
+
+- NavBar
+  - need routing on names in notifs?
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

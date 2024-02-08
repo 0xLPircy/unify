@@ -58,3 +58,31 @@ export const chains: {
 
 export const currentAddress = '0x27923CAB90564c5C195BbFb98f7DA8d3D4F751Fb';
 export const curEns = '0xLpircy.eth';
+export const notifs: {
+  type: String;
+  fromAdd: String;
+  toAdd: String;
+  fromChain: String[];
+  toChain: String[];
+  status: String;
+  link: String;
+}[] = [
+  {
+    type: 'sent',
+    fromAdd: 'vitalik.ens',
+    toAdd: '0xLPircy',
+    fromChain: ['polygon'],
+    toChain: ['dummy chain', 'dummy chain2'],
+    status: 'unread',
+    link: '/dashboard'
+  },
+  {
+    type: 'recieved',
+    fromAdd: 'yash.eth',
+    toAdd: 'lucifer0x17.ens',
+    fromChain: ['dummy chain', 'dummy chain2'],
+    toChain: ['ethereum'],
+    status: 'read',
+    link: '/dashboard'
+  }
+];
