@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { NotifTransact } from '.';
 import Link from 'next/link';
+import { curEns, currentAddress } from '../_lib/constants';
 
 const Navbar = () => {
   const currentPage = window.location.pathname.split('/')[1];
@@ -67,7 +68,7 @@ const Navbar = () => {
                 className="self-center place-self-center"
               />
               <h3 className="text-[21px] self-center place-self-center">
-                vitalik.ens
+                {curEns}
               </h3>
             </div>
             {/* notif */}
@@ -132,7 +133,9 @@ const Navbar = () => {
         currentPage == 'loader') && (
         <div className="flex gap-2 items-center">
           <div className="bg-[#777777] rounded-full p-4"></div>
-          <h4 className="text-[18px]">0xjd...s4d</h4>
+          <h4 className="text-[18px]">
+            {currentAddress.slice(0, 5)}...{currentAddress.slice(38, 42)}
+          </h4>
         </div>
       )}
     </div>

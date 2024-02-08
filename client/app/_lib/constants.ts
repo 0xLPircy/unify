@@ -55,3 +55,6 @@ export const chains: {
     bgProp: 'bg-[linear-gradient(82deg,_#BD6F70_0.01%,_#FCC6C7_100%)]'
   }
 ];
+
+export const currentAddress = '0x27923CAB90564c5C195BbFb98f7DA8d3D4F751Fb';
+export const curEns = '0xLpircy.eth';
