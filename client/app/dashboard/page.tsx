@@ -1,12 +1,5 @@
 import React from 'react';
-import { chains } from '@/app/_lib/constants';
-import {
-  Navbar,
-  Footer,
-  ChainFund,
-  ChooseChain,
-  ChainSubtotal
-} from '../_components';
+import { Footer } from '../_components';
 import Image from 'next/image';
 import { DeductionSection, FundsSection, TransferSection } from '../_container';
 

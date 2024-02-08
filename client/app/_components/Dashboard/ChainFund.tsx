@@ -1,3 +1,4 @@
+import { userFunds } from '@/app/_lib/constants';
 import Image from 'next/image';
 import React from 'react';
 
@@ -17,7 +18,13 @@ const ChainFund = ({ chain, bgCol }: any) => {
       <div className="grid">
         <h4 className="text-[16px] capitalize font-semibold">{chain}</h4>
         <h2 className="text-[32px]">
-          $1.500<span className="text-[24px]">usdc</span>
+          $
+          {userFunds.map((chainName) => {
+            if (chainName.chain == chain) {
+              return <span>{chainName.amount.toString(10)}</span>;
+            }
+          })}
+          <span className="text-[21px]"> usdc</span>
         </h2>
       </div>
     </div>

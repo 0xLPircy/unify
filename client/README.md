@@ -5,12 +5,18 @@ Dynamic Done
   - ens on dashboard my nft, chat
   - notification amount
   - notifications
+- Dashboard
+  - containerized
+  - lhs componentised
+  - chain funds dynamic
 
 Left
 
 - Navbar
   - populate notifs in constants
   - look through the chains for notifs
+- Dashboard
+  - total
 
 To Ask
 

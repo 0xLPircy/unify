@@ -1,9 +1,10 @@
 import Navbar from './Layout/Navbar';
 import Footer from './Layout/Footer';
+import NotifTransact from './Layout/NotifTransact';
 import ChainFund from './Dashboard/ChainFund';
 import ChooseChain from './Dashboard/ChooseChain';
 import ChainSubtotal from './Dashboard/ChainSubtotal';
-import NotifTransact from './Layout/NotifTransact';
+import TotalFunds from './Dashboard/TotalFunds';
 import Nft from './Nft';
 import Poap from './Poap';
 import ChatProfile from './ChatProfile';
@@ -22,5 +23,6 @@ export {
   ChatProfile,
   LhsChat,
   ChatRecieved,
-  ChatSent
+  ChatSent,
+  TotalFunds
 };
