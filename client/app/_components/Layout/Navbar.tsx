@@ -7,9 +7,9 @@ import { curEns, currentAddress, notifs } from '../../_lib/constants';
 
 const Navbar = () => {
   const currentPage = window.location.pathname.split('/')[1];
-  console.log(currentPage);
+  // console.log(currentPage);
   const [notifClicked, setNotifClicked] = useState(false);
-  console.log(currentPage);
+  // console.log(currentPage);
   const [unreadNotifs, setUnreadNotifs] = useState(0);
   useEffect(() => {
     notifs.map((notif) => {
