@@ -5,13 +5,15 @@ import React, { useEffect, useState } from 'react';
 
 const TotalFunds = () => {
   const [totalFund, setTotalFund] = useState(0);
-  //   useEffect(() => {
-  //     userFunds.map((chain) => {
-  //       console.log(totalFund);
-  //       setTotalFund(chain.amount + totalFund);
-  //       console.log(totalFund);
-  //     });
-  //   }, [userFunds]);
+  // var totalFund = 0;
+  // // console.log(userFunds[1].amount);
+  // useEffect(() => {
+  //   // console.log(totalFund);
+  //   userFunds.map((chain) => {
+  //     totalFund = totalFund + chain.amount;
+  //     console.log(totalFund);
+  //   });
+  // }, []);
   return (
     <div className="w-[288px] bg-[#FECE00] rounded-[16px] p-4 grid gap-4">
       {/* profile */}
