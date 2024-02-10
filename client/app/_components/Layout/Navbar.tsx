@@ -1,12 +1,13 @@
 'use client';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { NotifTransact } from '..';
 import Link from 'next/link';
 import { curEns, currentAddress, notifs } from '../../_lib/constants';
 
 const Navbar = () => {
-  const currentPage = window.location.pathname.split('/')[1];
+  const currentPage = usePathname();
   // console.log(currentPage);
   const [notifClicked, setNotifClicked] = useState(false);
   // console.log(currentPage);
@@ -124,7 +125,7 @@ const Navbar = () => {
                 </div>
                 {/* transaction */}
                 {notifs.map((notif) => {
-                  return <NotifTransact notif={notif} />;
+                  return <NotifTransact key={notif} notif={notif} />;
                 })}
               </div>
             )}

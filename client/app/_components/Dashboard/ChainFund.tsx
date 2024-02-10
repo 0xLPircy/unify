@@ -19,9 +19,9 @@ const ChainFund = ({ chain, bgCol }: any) => {
         <h4 className="text-[16px] capitalize font-semibold">{chain}</h4>
         <h2 className="text-[32px]">
           $
-          {userFunds.map((chainName) => {
+          {userFunds.map((chainName, index) => {
             if (chainName.chain == chain) {
-              return <span>{chainName.amount.toString(10)}</span>;
+              return <span key={index}>{chainName.amount.toString(10)}</span>;
             }
           })}
           <span className="text-[21px]"> usdc</span>
