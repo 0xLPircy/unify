@@ -16,6 +16,7 @@ Left
 - Navbar
   - populate notifs in constants
   - look through the chains for notifs
+  - notif effect might not work
 - Dashboard
   - total
   - chain state
