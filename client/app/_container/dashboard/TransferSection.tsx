@@ -1,9 +1,23 @@
+'use client';
 import { ChooseChain } from '@/app/_components';
 import { chains } from '@/app/_lib/constants';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 
 const TransferSection = () => {
+  const [recipient, setRecipient] = useState('');
+  const [amount, setAmount] = useState<number>();
+  const [currency, setCurrency] = useState('USDC');
+  const previewHandler = () => {
+    console.log(recipient);
+    console.log(amount);
+    console.log(currency);
+    // PREVIEW
+    // INTEG
+    setRecipient('');
+    setAmount(0);
+    setCurrency('USDC');
+  };
   return (
     <div className="w-[694px] bg-[#00000000] rounded-[24px] p-6 flex flex-col gap-4">
       <h1 className="text-center text-[42px] w-[100%] font-bold">
@@ -13,6 +27,10 @@ const TransferSection = () => {
       <div className="w-[100%] grid gap-2">
         <h3 className="text-start text-[21px]">Type Recipient</h3>
         <input
+          onChange={(e) => {
+            setRecipient(e.target.value);
+          }}
+          value={recipient}
           type="text"
           placeholder="Type address or ens or lens"
           className="p-[10px] bg-[#f1f1f1] text-start text-[21px] rounded-[8px] border-[1px] border-solid border-[#BDCFD0]"
@@ -33,21 +51,37 @@ const TransferSection = () => {
         <div className="grid grid-flow-col gap-[8px]">
           <div className="flex  bg-[#f1f1f1] text-start text-[21px] rounded-[8px] w-[470px] border-[1px] border-solid border-[#BDCFD0] ">
             <input
-              type="text"
+              onChange={(e) => {
+                setAmount(parseInt(e.target.value, 10));
+              }}
+              value={amount}
+              type="number"
               placeholder="Type amount"
               className="w-[100%] h-[100%] p-[10px] rounded-[12xp]"
             />
-            <select name="dropdown" className="">
-              <option value={'usdc'}>USDC</option>
-              <option value={'fxd'}>FXD</option>
+            <select
+              onChange={(e) => {
+                setCurrency(e.target.value);
+              }}
+              value={currency}
+              name="dropdown"
+              className=""
+            >
+              <option value={'USDC'}>USDC</option>
+              <option value={'FXD'}>FXD</option>
             </select>
           </div>
           {/* btn */}
-          <div className="px-[20px] py-[10px] grid grid-flow-col rounded-[8px] gap-2 bg-[#48637C] hover:cursor-pointer hover:border-b-[4px] hover:py-[8px]">
+          <button
+            onClick={() => {
+              previewHandler();
+            }}
+            className="px-[20px] py-[10px] grid grid-flow-col rounded-[8px] gap-2 bg-[#48637C] hover:cursor-pointer hover:border-b-[4px] hover:py-[8px]"
+          >
             <h4 className="text-[21px] text-[#ffffff] font-bold place-self-center self-center">
               Preview
             </h4>
-          </div>
+          </button>
         </div>
       </div>
       <Image

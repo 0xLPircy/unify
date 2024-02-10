@@ -9,6 +9,7 @@ Dynamic Done
   - containerized
   - lhs componentised
   - chain funds dynamic
+  - recipient amount currency state
 
 Left
 
@@ -17,6 +18,8 @@ Left
   - look through the chains for notifs
 - Dashboard
   - total
+  - chain state
+  - amount int/float
 
 To Ask
 
