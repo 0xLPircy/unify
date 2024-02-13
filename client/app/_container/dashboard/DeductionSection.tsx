@@ -24,7 +24,7 @@ const DeductionSection = () => {
     }, 100);
   };
   return (
-    <div className="h-fit flex flex-col gap-3 m-4 p-4 rounded-[16px] bg-[#FECE00]">
+    <div className="h-fit flex flex-col gap-3 m-4 p-4 rounded-[16px] bg-[#FECE00] border-[0.9px] border-[#e2c02a]">
       <h2 className="text-center text-[24px]">Deduction detailed by chain:</h2>
       {/* deduction content */}
       <div className="flex flex-col items-center">
@@ -52,7 +52,9 @@ const DeductionSection = () => {
           onClick={() => {
             transferHandler();
           }}
-          className="mt-2 w-[100%] text-[21px] font-normal bg-[#0BD262] text-[#000000] hover:shadow-[0px_6px_0px_0px_#091D31] h-fit  rounded-[8px] px-8 py-2 flex items-center justify-center gap-4  border-[1px] border-solid border-[#091D31] z-50"
+          className="mt-2 w-[100%] text-[21px] font-normal 
+          bg-[#0BD262] text-[#000000] 
+          hover:shadow-[0px_6px_0px_0px_#091D31] hover:mb-1 h-fit rounded-[8px] px-8 py-2 hover:pt-[6px] flex items-center justify-center gap-4 border-[1px] border-solid border-[#091D31] z-50"
         >
           <h4>Transfer Now</h4>
           <Image
