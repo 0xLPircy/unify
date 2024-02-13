@@ -15,7 +15,7 @@ const TotalFunds = ({ userFunds }: any) => {
     setTotalAmount(newTotalAmount);
   }, [userFunds]);
   return (
-    <div className="w-[288px] bg-[#FECE00] rounded-[16px] p-4 grid gap-4">
+    <div className="w-[288px] bg-[#FECE00] rounded-[16px] p-4 grid gap-4 border-[0.9px] border-[#e2c02a]">
       {/* profile */}
       <div className="self-center place-self-center w-[100%] text-[#f1f1f1] grid grid-flow-col gap-4 rounded-[8px] bg-[#0BD262]">
         <Image

@@ -70,7 +70,7 @@ const TransferSection = () => {
               value={amount}
               type="number"
               placeholder="Type amount"
-              className="w-[100%] h-[100%] p-[10px] rounded-[12xp]"
+              className="w-[100%]  p-[9px] rounded-[12px] m-[3px] border-[0.3px] border-solid border-[#BDCFD0]"
             />
             <select
               onChange={(e) => {
@@ -78,7 +78,7 @@ const TransferSection = () => {
               }}
               value={currency}
               name="dropdown"
-              className=""
+              className="rounded-[12px] m-[3px] border-[0.3px] border-solid border-[#BDCFD0]"
             >
               <option value={'USDC'}>USDC</option>
               <option value={'FXD'}>FXD</option>
@@ -89,7 +89,7 @@ const TransferSection = () => {
             onClick={() => {
               previewHandler();
             }}
-            className="px-[20px] py-[10px] grid grid-flow-col rounded-[8px] gap-2 bg-[#48637C] hover:cursor-pointer hover:border-b-[4px] hover:py-[8px]"
+            className="px-[20px] py-[10px] grid grid-flow-col rounded-[8px] gap-2 bg-[#48637C] hover:cursor-pointer hover:border-b-[4px] border-[#000000] border-[0.6px] hover:py-[8px]"
           >
             <h4 className="text-[21px] text-[#ffffff] font-bold place-self-center self-center">
               Preview
