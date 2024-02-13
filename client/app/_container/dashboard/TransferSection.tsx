@@ -15,19 +15,18 @@ const TransferSection = () => {
     console.log(amount);
     console.log(currency);
     setTimeout(() => {
-      toast.error('Calculating Deductions', {
-        position: 'bottom-center',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored'
+      // FUNCTION FOR DEDUCTION
+      // INTEGRA
+      const resolveAfter3Sec = new Promise((resolve) =>
+        setTimeout(resolve, 3000)
+      );
+      toast.promise(resolveAfter3Sec, {
+        pending: 'Calculating Deductions',
+        success: 'Deductions Calculated',
+        error: 'Not Enough Funds'
       });
-    }, 1000);
-    // PREVIEW
-    // INTEG
+    }, 100);
+
     setRecipient('');
     setAmount(0);
     setCurrency('USDC');
@@ -106,7 +105,7 @@ const TransferSection = () => {
       />
       <ToastContainer
         position="bottom-center"
-        autoClose={1000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
