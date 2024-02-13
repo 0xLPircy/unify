@@ -3,6 +3,8 @@ import { ChooseChain } from '@/app/_components';
 import { chains } from '@/app/_lib/constants';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TransferSection = () => {
   const [recipient, setRecipient] = useState('');
@@ -12,6 +14,18 @@ const TransferSection = () => {
     console.log(recipient);
     console.log(amount);
     console.log(currency);
+    setTimeout(() => {
+      toast.error('Calculating Deductions', {
+        position: 'bottom-center',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored'
+      });
+    }, 1000);
     // PREVIEW
     // INTEG
     setRecipient('');
@@ -89,6 +103,18 @@ const TransferSection = () => {
         alt="transaction chest"
         width={374}
         height={374}
+      />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
       />
     </div>
   );
