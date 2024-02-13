@@ -9,16 +9,17 @@ import 'react-toastify/dist/ReactToastify.css';
 const DeductionSection = () => {
   const transferHandler = () => {
     // TRANSFER CLICKED
+
     setTimeout(() => {
-      toast.success('Transfer Successfull', {
-        position: 'bottom-center',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored'
+      // FUNCTION FOR TRANSFER
+      // INTEGRA
+      const resolveAfter3Sec = new Promise((resolve) =>
+        setTimeout(resolve, 3000)
+      );
+      toast.promise(resolveAfter3Sec, {
+        pending: 'Transfer Initiated',
+        success: 'Transfer Successfull',
+        error: 'Transfer Unsuccessfull'
       });
     }, 100);
   };

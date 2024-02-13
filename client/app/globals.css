@@ -6,7 +6,7 @@
   --toastify-text-color-success: #000;
   --toastify-color-success: #0bd262;
   --toastify-text-color-error: #000000;
-  --toastify-color-error: #23a0ff;
+  --toastify-color-error: #ff6161;
 
   margin: 0;
   padding: 0;
@@ -15,7 +15,9 @@
 .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success {
   background-color: #000 !important;
 }
-
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+  background-color: #000 !important;
+}
 .Toastify__close-button,
 .Toastify__close-button--colored {
   color: #000 !important;
