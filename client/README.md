@@ -10,6 +10,7 @@ Dynamic Done
   - lhs componentised
   - chain funds dynamic
   - recipient amount currency state
+  - total
 
 Left
 
@@ -18,7 +19,6 @@ Left
   - look through the chains for notifs
   - notif effect might not work
 - Dashboard
-  - total
   - chain state
   - amount int/float
 
