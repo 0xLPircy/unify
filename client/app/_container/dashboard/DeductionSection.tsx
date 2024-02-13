@@ -1,5 +1,5 @@
 'use client';
-import { ChainSubtotal } from '@/app/_components';
+import { ChainSubtotal, DeductionTotal } from '@/app/_components';
 import { chains, deductions } from '@/app/_lib/constants';
 import Image from 'next/image';
 import React from 'react';
@@ -33,21 +33,7 @@ const DeductionSection = () => {
           </div>
         </div>
         {/* deduction total */}
-        <div className="bg-[#f1f1f1] font-normal border-[#1c1b1f1b] border-solid border-[1px] rounded-[8px] w-[100%] h-[100%] flex flex-col p-2 items-center justify-center">
-          <div className="grid grid-flow-col gap-[10px] pb-[0px] font-semibold">
-            <Image
-              src={'/logo.svg'}
-              alt="logo"
-              width={30}
-              height={30}
-              className="self-center place-self-center"
-            />
-            <h1 className="text-[32px] self-center place-self-center">
-              Unify Total
-            </h1>
-          </div>
-          <h2 className="text-[32px]">$3.000 usdc</h2>
-        </div>
+        <DeductionTotal deductions={deductions} />
         <button
           onClick={() => {
             transferHandler();

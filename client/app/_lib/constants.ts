@@ -120,7 +120,7 @@ export const deductions: {
 }[] = [
   {
     chain: 'ethereum',
-    amount: 0
+    amount: 4
   },
   {
     chain: 'polygon',

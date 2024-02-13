@@ -1,19 +1,19 @@
 'use client';
-import { curEns, userFunds } from '@/app/_lib/constants';
+import { curEns } from '@/app/_lib/constants';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-const TotalFunds = () => {
-  const [totalFund, setTotalFund] = useState(0);
-  // var totalFund = 0;
-  // // console.log(userFunds[1].amount);
-  // useEffect(() => {
-  //   // console.log(totalFund);
-  //   userFunds.map((chain) => {
-  //     totalFund = totalFund + chain.amount;
-  //     console.log(totalFund);
-  //   });
-  // }, []);
+const TotalFunds = ({ userFunds }: any) => {
+  const [totalAmount, setTotalAmount] = useState<number>(0);
+
+  useEffect(() => {
+    // Calculate the sum of amounts whenever 'deductions' change
+    const newTotalAmount = userFunds.reduce(
+      (acc: number, { amount }: any) => acc + amount,
+      0
+    );
+    setTotalAmount(newTotalAmount);
+  }, [userFunds]);
   return (
     <div className="w-[288px] bg-[#FECE00] rounded-[16px] p-4 grid gap-4">
       {/* profile */}
@@ -38,7 +38,9 @@ const TotalFunds = () => {
       <div className="flex flex-col self-center place-self-center font-normal">
         {' '}
         <h2 className="text-left text-[27px]">Total Funds:</h2>
-        <h1 className="text-center text-[54px] leading-[60px]">${totalFund}</h1>
+        <h1 className="text-center text-[54px] leading-[60px]">
+          ${totalAmount}
+        </h1>
         <h4 className="text-center text-[16px]">*assets represented in USDC</h4>
       </div>
     </div>
