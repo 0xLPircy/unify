@@ -114,6 +114,64 @@ export const userFunds: {
   }
 ];
 
+export const deductions: {
+  chain: String;
+  amount: number;
+}[] = [
+  {
+    chain: 'ethereum',
+    amount: 0
+  },
+  {
+    chain: 'polygon',
+    amount: 10
+  },
+  {
+    chain: 'scroll',
+    amount: 0
+  },
+  {
+    chain: 'base',
+    amount: 16
+  },
+  {
+    chain: 'celo',
+    amount: 0
+  },
+  {
+    chain: 'optimism',
+    amount: 0
+  },
+  {
+    chain: 'arbitrum',
+    amount: 0
+  },
+  {
+    chain: 'mantle',
+    amount: 0
+  },
+  {
+    chain: 'xdc',
+    amount: 0
+  },
+  {
+    chain: 'zetachain',
+    amount: 0
+  },
+  {
+    chain: 'linea',
+    amount: 0
+  },
+  {
+    chain: 'okx',
+    amount: 0
+  },
+  {
+    chain: 'avalanche',
+    amount: 0
+  }
+];
+
 export const currentAddress = '0x27923CAB90564c5C195BbFb98f7DA8d3D4F751Fb';
 export const curEns = '0xLpircy.eth';
 export const notifs: {
