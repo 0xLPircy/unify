@@ -6,7 +6,7 @@ const ChainFund = ({ chain, bgCol }: any) => {
   return (
     <div
       className={`text-[#1C1B1F] grid grid-flow-col pt-2 pr-4 rounded-[16px] mr-3
-    ${bgCol}`}
+    ${bgCol} border-[0.9px] border-[#a8a8a892]`}
     >
       <Image
         src={`/chainFund/${chain}.png`}

@@ -31,7 +31,7 @@ const DeductionSection = () => {
         {/* deduction*/}
         <div className="w-[366px]">
           {/* heading */}
-          <div className="grid grid-flow-col bg-[#ffffff] w-[366px] rounded-[8px] mb-[8px]">
+          <div className="grid grid-flow-col bg-[#ffffff] w-[366px] rounded-[8px] mb-[8px] border-[0.3px] border-solid border-[#000000]">
             <h4 className="w-[220px] p-[6px] text-center text-[21px]  border-r-[1px] border-solid border-[#1C1B1F]">
               Chain
             </h4>
@@ -40,7 +40,7 @@ const DeductionSection = () => {
             </h4>
           </div>
           {/* chain - subtotal */}
-          <div className="flex flex-col overflow-y-scroll h-[450px]">
+          <div className="flex flex-col overflow-y-scroll h-[450px] rounded-md mb-[6px] border-[0.1px] border-solid border-[#000000]">
             {deductions.map((chain) => (
               <ChainSubtotal chain={chain} key={chain.chain} />
             ))}
