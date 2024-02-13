@@ -1,9 +1,14 @@
+'use client';
 import { ChainSubtotal } from '@/app/_components';
-import { chains } from '@/app/_lib/constants';
+import { chains, deductions } from '@/app/_lib/constants';
 import Image from 'next/image';
 import React from 'react';
 
 const DeductionSection = () => {
+  const transferHandler = () => {
+    // TRANSFER CLICKED
+    console.log('TRANSFER INITIATED');
+  };
   return (
     <div className="h-fit flex flex-col gap-3 m-4 p-4 rounded-[16px] bg-[#FECE00]">
       <h2 className="text-center text-[24px]">Deduction detailed by chain:</h2>
@@ -22,8 +27,8 @@ const DeductionSection = () => {
           </div>
           {/* chain - subtotal */}
           <div className="flex flex-col overflow-y-scroll h-[450px]">
-            {chains.map((chain) => (
-              <ChainSubtotal chain={chain.name} key={chain.name} />
+            {deductions.map((chain) => (
+              <ChainSubtotal chain={chain} key={chain.chain} />
             ))}
           </div>
         </div>
@@ -43,7 +48,12 @@ const DeductionSection = () => {
           </div>
           <h2 className="text-[32px]">$3.000 usdc</h2>
         </div>
-        <button className="mt-2 w-[100%] text-[21px] font-normal bg-[#0BD262] text-[#000000] hover:shadow-[0px_6px_0px_0px_#091D31] h-fit  rounded-[8px] px-8 py-2 flex items-center justify-center gap-4  border-[1px] border-solid border-[#091D31] z-50">
+        <button
+          onClick={() => {
+            transferHandler();
+          }}
+          className="mt-2 w-[100%] text-[21px] font-normal bg-[#0BD262] text-[#000000] hover:shadow-[0px_6px_0px_0px_#091D31] h-fit  rounded-[8px] px-8 py-2 flex items-center justify-center gap-4  border-[1px] border-solid border-[#091D31] z-50"
+        >
           <h4>Transfer Now</h4>
           <Image
             src={'/rocket.svg'}
