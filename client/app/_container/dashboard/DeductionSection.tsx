@@ -3,18 +3,31 @@ import { ChainSubtotal, DeductionTotal } from '@/app/_components';
 import { chains, deductions } from '@/app/_lib/constants';
 import Image from 'next/image';
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DeductionSection = () => {
   const transferHandler = () => {
     // TRANSFER CLICKED
-    console.log('TRANSFER INITIATED');
+    setTimeout(() => {
+      toast.success('Transfer Successfull', {
+        position: 'bottom-center',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored'
+      });
+    }, 100);
   };
   return (
     <div className="h-fit flex flex-col gap-3 m-4 p-4 rounded-[16px] bg-[#FECE00]">
       <h2 className="text-center text-[24px]">Deduction detailed by chain:</h2>
       {/* deduction content */}
       <div className="flex flex-col items-center">
-        {/* deduction LHS */}
+        {/* deduction*/}
         <div className="w-[366px]">
           {/* heading */}
           <div className="grid grid-flow-col bg-[#ffffff] w-[366px] rounded-[8px] mb-[8px]">
@@ -50,6 +63,18 @@ const DeductionSection = () => {
           />
         </button>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

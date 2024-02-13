@@ -3,7 +3,28 @@
 @tailwind utilities;
 
 * {
+  --toastify-text-color-success: #000;
+  --toastify-color-success: #0bd262;
+  --toastify-text-color-error: #000000;
+  --toastify-color-error: #23a0ff;
+
   margin: 0;
   padding: 0;
   transition: all 0.3s;
+}
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success {
+  background-color: #000 !important;
+}
+
+.Toastify__close-button,
+.Toastify__close-button--colored {
+  color: #000 !important;
+}
+
+.Toastify__toast {
+  border: #000 solid 1px;
+  font-size: 21px;
+  font-weight: 200;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.3px;
 }
