@@ -1,0 +1,7 @@
+{
+    "solidity.compileUsingRemoteVersion": "v0.8.20+commit.a1b79de6",
+    "solidity.defaultCompiler": "remote",
+    "solidity.compileUsingLocalVersion": "/Users/megabyte0x/Documents/CODE/unifi-feb/soljson-v0.8.20+commit.a1b79de6.js",
+    "wake.lsp.code_lens.enable": false,
+    "wake.lsp.detectors.enable": true
+}
