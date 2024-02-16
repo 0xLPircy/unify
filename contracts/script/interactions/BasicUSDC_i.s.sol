@@ -52,3 +52,26 @@ contract MintUSDCToAddress is Script {
         mintUSDCToAddressUsingConfigs();
     }
 }
+
+contract ApproveUSDCToTreasury is Script {
+    uint256 constant USDC_TO_APPROVE = 1000_000e18;
+    uint256 immutable USER_A_PRIVATE_KEY = vm.envUint("PRIVATE_KEY");
+
+    function approveUSDCToTreasury(address _treasuryAddress, address _usdcAddress) public {
+        vm.startBroadcast(USER_A_PRIVATE_KEY);
+        BasicUSDC usdc = BasicUSDC(_usdcAddress);
+        usdc.approve(_treasuryAddress, USDC_TO_APPROVE);
+        vm.stopBroadcast();
+    }
+
+    function approveUSDCToTreasuryUsingConfigs() public {
+        HelperConfig helperConfig = new HelperConfig();
+        address treasuryAddress = helperConfig.getTreasuryAddress(block.chainid);
+        address usdcAddress = helperConfig.getUSDCAddress(block.chainid);
+        approveUSDCToTreasury(treasuryAddress, usdcAddress);
+    }
+
+    function run() public {
+        approveUSDCToTreasuryUsingConfigs();
+    }
+}
