@@ -102,6 +102,9 @@ mintBasicUSDCToTreasury:
 mintUSDCToAddress:
 	@forge script script/interactions/BasicUSDC_i.s.sol:MintUSDCToAddress $(NETWORK_ARGS)
 
+approveUSDCToTreasury:
+	@forge script script/interactions/BasicUSDC_i.s.sol:ApproveUSDCToTreasury $(NETWORK_ARGS)
+
 deployUtils:
 	@forge script script/DeployUtils.s.sol:DeployUtils $(NETWORK_ARGS)
 
@@ -111,5 +114,20 @@ setUpUtils:
 deployTreasuryCrossChain: 
 	@forge script script/DeployTreasuryCrossChain.s.sol:DeployTreasuryCrossChain $(NETWORK_ARGS)
 
+setTreasuryCrossChainAddress:
+	@forge script script/interactions/Utils_i.s.sol:SetTreasuryCrossChainAddress $(NETWORK_ARGS)
+
 deployMainContract:
 	@forge script script/DeployMainContract.s.sol:DeployMainContract $(NETWORK_ARGS)
+
+setTreasuryCrossChainAddressOnMainContract:
+	@forge script script/interactions/MainContract_i.s.sol:SetTreasuryCrossChainAddress $(NETWORK_ARGS)
+
+sendFundsOnSameChain:
+	@forge script script/interactions/MainContract_i.s.sol:SendFundsOnSameChain $(NETWORK_ARGS)
+
+sendFundsOn_2Chains:
+	@forge script script/interactions/MainContract_i.s.sol:SendFundsOn_2Chains $(NETWORK_ARGS)
+
+setUtilsOnTreasuryCrossChain:
+	@forge script script/interactions/TreasuryCrossChain_i.s.sol:SetUtils $(NETWORK_ARGS)
