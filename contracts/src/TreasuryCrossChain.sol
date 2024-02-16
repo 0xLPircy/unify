@@ -30,9 +30,9 @@ contract TreasuryCrossChain is CCIPReceiver {
         returns (bytes32 messageId)
     {
         if (_chainId == block.chainid) {
-            sendFundsToTreasury(_user, _amount, _txCounter);
+            _sendFundsToTreasury(_user, _amount, _txCounter);
         } else {
-            Client.EVM2AnyMessage memory evm2AnyMessage = _buildCCIPMessage(_user, _amount, _txCounter);
+            Client.EVM2AnyMessage memory evm2AnyMessage = _buildCCIPMessage(_user, _chainId, _amount, _txCounter);
 
             IRouterClient router = IRouterClient(this.getRouter());
             uint64 _destinationChainSelector = Utils(s_utils).getChainIdToChainSelector(_chainId);
@@ -45,20 +45,24 @@ contract TreasuryCrossChain is CCIPReceiver {
 
     function _ccipReceive(Client.Any2EVMMessage memory message) internal override {
         (address _user, uint256 _amount, uint8 _txCounter) = abi.decode(message.data, (address, uint256, uint8));
-        sendFundsToTreasury(_user, _amount, _txCounter);
+        _sendFundsToTreasury(_user, _amount, _txCounter);
     }
 
-    function sendFundsToTreasury(address _user, uint256 _amount, uint8 _txCounter) internal {
+    function _sendFundsToTreasury(address _user, uint256 _amount, uint8 _txCounter) internal {
         Treasury(s_treasury).receiveFunds(_user, _amount, _txCounter);
     }
 
-    function _buildCCIPMessage(address _user, uint256 _amount, uint8 _txCounter)
+    function getTreasuryCrossChainAddress(uint256 _chainId) public view returns (address) {
+        return Utils(s_utils).getChainIdToTreasuryCrossChainAddress(_chainId);
+    }
+
+    function _buildCCIPMessage(address _user, uint256 _chainId, uint256 _amount, uint8 _txCounter)
         internal
         view
         returns (Client.EVM2AnyMessage memory)
     {
         return Client.EVM2AnyMessage({
-            receiver: abi.encode(address(this)),
+            receiver: abi.encode(getTreasuryCrossChainAddress(_chainId)),
             data: abi.encode(_user, _amount, _txCounter),
             tokenAmounts: new Client.EVMTokenAmount[](0),
             extraArgs: Client._argsToBytes(
@@ -68,4 +72,6 @@ contract TreasuryCrossChain is CCIPReceiver {
             feeToken: address(0)
         });
     }
+
+    receive() external payable {}
 }

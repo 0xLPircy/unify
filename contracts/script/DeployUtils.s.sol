@@ -6,7 +6,7 @@ import {console} from "forge-std/console.sol";
 import {Utils} from "../src/Utils.sol";
 
 contract DeployUtils is Script {
-    bytes32 public constant SALT = 0x556e794669000000000000000000000000000000000000000000000000000000;
+    bytes32 public constant SALT = 0x556e794661000000000000000000000000000000000000000000000000000000;
 
     function run() public {
         vm.startBroadcast();
