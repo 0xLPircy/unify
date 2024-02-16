@@ -101,4 +101,15 @@ mintBasicUSDCToTreasury:
 
 mintUSDCToAddress:
 	@forge script script/interactions/BasicUSDC_i.s.sol:MintUSDCToAddress $(NETWORK_ARGS)
-	
+
+deployUtils:
+	@forge script script/DeployUtils.s.sol:DeployUtils $(NETWORK_ARGS)
+
+setUpUtils:
+	@forge script script/interactions/Utils_i.s.sol:SetUpUtils $(NETWORK_ARGS)
+
+deployTreasuryCrossChain: 
+	@forge script script/DeployTreasuryCrossChain.s.sol:DeployTreasuryCrossChain $(NETWORK_ARGS)
+
+deployMainContract:
+	@forge script script/DeployMainContract.s.sol:DeployMainContract $(NETWORK_ARGS)

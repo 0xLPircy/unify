@@ -68,4 +68,16 @@ contract HelperConfig is Script {
     function getTreasuryAddress(uint256 _chainId) public view returns (address _treasury) {
         _treasury = DevOpsTools.get_most_recent_deployment("Treasury", _chainId);
     }
+
+    function getUtilsAddress(uint256 _chainId) public view returns (address _utils) {
+        _utils = DevOpsTools.get_most_recent_deployment("Utils", _chainId);
+    }
+
+    function getTreasuryCrossChainAddress(uint256 _chainId) public view returns (address _treasuryCrossChain) {
+        _treasuryCrossChain = DevOpsTools.get_most_recent_deployment("TreasuryCrossChain", _chainId);
+    }
+
+    function getMainContractAddress(uint256 _chainId) public view returns (address _mainContract) {
+        _mainContract = DevOpsTools.get_most_recent_deployment("MainContract", _chainId);
+    }
 }
