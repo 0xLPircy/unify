@@ -6,11 +6,21 @@ import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.s
 import {CCIPReceiver} from "@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol";
 
 import {Treasury} from "./Treasury.sol";
+import {Utils} from "./Utils.sol";
 
-contract CrossChain is CCIPReceiver {
+contract TreasuryCrossChain is CCIPReceiver {
     address public s_treasury;
+    address public s_utils;
 
     constructor(address _router) CCIPReceiver(_router) {}
+
+    function setTreasury(address _treasury) external {
+        s_treasury = _treasury;
+    }
+
+    function setUtils(address _utils) external {
+        s_utils = _utils;
+    }
 
     function sendAssetsToTreasury(address _user, uint256 _amount, uint256 _chainId, uint8 _txCounter)
         external
@@ -22,7 +32,7 @@ contract CrossChain is CCIPReceiver {
             Client.EVM2AnyMessage memory evm2AnyMessage = _buildCCIPMessage(_user, _amount, _txCounter);
 
             IRouterClient router = IRouterClient(this.getRouter());
-            uint64 _destinationChainSelector = uint64(_chainId);
+            uint64 _destinationChainSelector = Utils(s_utils).getChainIdToChainSelector(_chainId);
 
             uint256 fees = router.getFee(_destinationChainSelector, evm2AnyMessage);
 
