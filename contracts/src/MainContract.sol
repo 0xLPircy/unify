@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-import {CrossChain} from "./CrossChain.sol";
+import {TreasuryCrossChain} from "./TreasuryCrossChain.sol";
 
 contract MainContract {
     error MainContract__UnequalArray();
@@ -9,12 +9,12 @@ contract MainContract {
 
     event MainContract__AssetsSent(address indexed to, uint256 indexed amount, uint8 indexed txCounter);
 
-    address public s_crossChain;
+    address public s_treasuryCrossChain;
 
     uint8 public tx_counter = 0;
 
-    constructor(address _crossChain) {
-        s_crossChain = _crossChain;
+    constructor(address _treasuryCrossChain) {
+        s_treasuryCrossChain = _treasuryCrossChain;
     }
 
     modifier isZeroAddress(address _address) {
@@ -33,7 +33,9 @@ contract MainContract {
         }
         for (uint256 i = 0; i < _chainIds.length; i++) {
             // call CCIP contract to transfer funds to the `chainIds[i]` chain treasury address
-            CrossChain(s_crossChain).sendAssetsToTreasury(msg.sender, _amounts[i], _chainIds[i], tx_counter);
+            TreasuryCrossChain(s_treasuryCrossChain).sendAssetsToTreasury(
+                msg.sender, _amounts[i], _chainIds[i], tx_counter
+            );
         }
 
         emit MainContract__AssetsSent(_to, _amounts[0], tx_counter);

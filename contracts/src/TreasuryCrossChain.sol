@@ -12,7 +12,10 @@ contract TreasuryCrossChain is CCIPReceiver {
     address public s_treasury;
     address public s_utils;
 
-    constructor(address _router) CCIPReceiver(_router) {}
+    constructor(address _router, address _treasury, address _utils) CCIPReceiver(_router) {
+        s_treasury = _treasury;
+        s_utils = _utils;
+    }
 
     function setTreasury(address _treasury) external {
         s_treasury = _treasury;
