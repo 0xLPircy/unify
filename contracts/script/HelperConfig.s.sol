@@ -9,6 +9,7 @@ contract HelperConfig is Script {
         address _router;
         uint64 _chainSelector;
         address _usdc;
+        address _linkToken;
     }
 
     mapping(uint256 _chainId => CrossChainDetails) public chainIdToCrossChainDetails;
@@ -25,16 +26,23 @@ contract HelperConfig is Script {
         }
     }
 
-    function getChainDetails(uint256 _chainId) external pure returns (address _router, uint64 _chainSelector) {
+    function getChainDetails(uint256 _chainId)
+        external
+        pure
+        returns (address _router, uint64 _chainSelector, address _linkToken)
+    {
         if (_chainId == 43113) {
             _router = 0xF694E193200268f9a4868e4Aa017A0118C9a8177;
             _chainSelector = 14767482510784806043;
+            _linkToken = 0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846;
         } else if (_chainId == 80001) {
             _router = 0x1035CabC275068e0F4b745A29CEDf38E13aF41b1;
             _chainSelector = 12532609583862916517;
+            _linkToken = 0x326C977E6efc84E512bB9C30f76E30c160eD06FB;
         } else if (_chainId == 11155111) {
             _router = 0x0BF3dE8c5D3e8A2B34D2BEeB17ABfCeBaf363A59;
             _chainSelector = 16015286601757825753;
+            _linkToken = 0x779877A7B0D9E8603169DdbD7836e478b4624789;
         } else {
             revert("Chain not supported");
         }
@@ -44,7 +52,8 @@ contract HelperConfig is Script {
         chainIdToCrossChainDetails[11155111] = CrossChainDetails({
             _router: 0x0BF3dE8c5D3e8A2B34D2BEeB17ABfCeBaf363A59,
             _chainSelector: 16015286601757825753,
-            _usdc: getUSDCAddress(block.chainid)
+            _usdc: getUSDCAddress(block.chainid),
+            _linkToken: 0x779877A7B0D9E8603169DdbD7836e478b4624789
         });
     }
 
@@ -52,7 +61,8 @@ contract HelperConfig is Script {
         chainIdToCrossChainDetails[80001] = CrossChainDetails({
             _router: 0x1035CabC275068e0F4b745A29CEDf38E13aF41b1,
             _chainSelector: 12532609583862916517,
-            _usdc: getUSDCAddress(block.chainid)
+            _usdc: getUSDCAddress(block.chainid),
+            _linkToken: 0x326C977E6efc84E512bB9C30f76E30c160eD06FB
         });
     }
 
@@ -60,7 +70,8 @@ contract HelperConfig is Script {
         chainIdToCrossChainDetails[43113] = CrossChainDetails({
             _router: 0xF694E193200268f9a4868e4Aa017A0118C9a8177,
             _chainSelector: 14767482510784806043,
-            _usdc: getUSDCAddress(block.chainid)
+            _usdc: getUSDCAddress(block.chainid),
+            _linkToken: 0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846
         });
     }
 
@@ -68,7 +79,8 @@ contract HelperConfig is Script {
         chainIdToCrossChainDetails[31337] = CrossChainDetails({
             _router: 0x0BF3dE8c5D3e8A2B34D2BEeB17ABfCeBaf363A59,
             _chainSelector: 16015286601757825753,
-            _usdc: getUSDCAddress(block.chainid)
+            _usdc: getUSDCAddress(block.chainid),
+            _linkToken: 0x779877A7B0D9E8603169DdbD7836e478b4624789
         });
     }
 

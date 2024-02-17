@@ -20,7 +20,7 @@ contract SetUpUtils is Script {
         HelperConfig helperConfig = new HelperConfig();
         address utils = helperConfig.getUtilsAddress(block.chainid);
         for (uint256 i = 0; i < chainIds.length; i++) {
-            (address router, uint64 chainSelector) = helperConfig.getChainDetails(chainIds[i]);
+            (address router, uint64 chainSelector,) = helperConfig.getChainDetails(chainIds[i]);
             setUpUtils(utils, chainIds[i], router, chainSelector);
         }
     }
