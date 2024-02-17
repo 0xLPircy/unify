@@ -102,6 +102,7 @@ const TransferSection = () => {
         alt="transaction chest"
         width={374}
         height={374}
+        className="z-[-10] fixed bottom-0 place-self-center"
       />
       <ToastContainer
         position="bottom-center"

@@ -19,7 +19,6 @@ const MyNftPage = () => {
           <Nft chain={1} />
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

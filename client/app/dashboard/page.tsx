@@ -6,7 +6,7 @@ import { DeductionSection, FundsSection, TransferSection } from '../_container';
 const DashboardPage = () => {
   return (
     <>
-      <div className="z-0 w-[100vw] flex flex-col bg-[linear-gradient(299deg,_#FFFCEA_0%,_#FFF8D4_0.01%,_#F8FCFF_100%)]">
+      <div className="z-0 w-[100vw] h-[91vh] flex flex-col bg-[linear-gradient(299deg,_#FFFCEA_0%,_#FFF8D4_0.01%,_#F8FCFF_100%)]">
         <Image
           src={'/mainLanding/landing-nettop.png'}
           width={1200}
@@ -14,12 +14,14 @@ const DashboardPage = () => {
           alt="bg"
           className="absolute top-[100px] opacity-75 self-center z-0"
         />
-        <div className="flex flex-row pt-0 z-10">
+        <div className="flex flex-row pt-0 z-10 h-[100%]">
           <FundsSection />
           <TransferSection />
-          <DeductionSection />
+          <div className="flex flex-col gap-4">
+            <DeductionSection />
+            <h1>HEy</h1>
+          </div>
         </div>
-        <Footer />
       </div>
     </>
   );
