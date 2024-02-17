@@ -127,7 +127,7 @@ sendFundsOn_2Chains:
 	@forge script script/interactions/MainContract_i.s.sol:SendFundsOn_2Chains $(NETWORK_ARGS)
 
 sendFundsOn_3Chains:
-	@forge script script/interactions/MainContract_i.s.sol:SendFundsOn_3Chains $(NETWORK_ARGS)
+	@forge script script/interactions/MainContract_i.s.sol:SendFundsOn_3Chains $(NETWORK_ARGS) -vvvvv
 
 setTreasuryCrossChainAddressOnMainContract:
 	@forge script script/interactions/MainContract_i.s.sol:SetTreasuryCrossChainAddress $(NETWORK_ARGS)

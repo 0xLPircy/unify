@@ -33,16 +33,15 @@ contract SendFundsOnSameChain is Script {
     address constant USER_A = 0x1Cb30cb181D7854F91c2410BD037E6F42130e860;
     address constant USER_B = 0xa60f738a60BCA515Ac529b7335EC7CB2eE3891d2;
     uint256 constant AMOUNT = 100e18;
+    uint256 constant DESTINATION_CHAIN_ID = 43113;
+    uint256 constant TOTAL_AMOUNT = 100e18;
 
-    function sendFundsFromSameChain(
-        address _mainContract,
-        address _user,
-        uint256[] memory _chainIds,
-        uint256[] memory _amounts
-    ) public {
+    function sendFundsFromSameChain(address _mainContract, uint256[] memory _chainIds, uint256[] memory _amounts)
+        public
+    {
         vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
         MainContract mainContract = MainContract(_mainContract);
-        mainContract.sendAssets(_user, _chainIds, _amounts);
+        mainContract.sendAssets(USER_B, TOTAL_AMOUNT, DESTINATION_CHAIN_ID, _chainIds, _amounts);
         vm.stopBroadcast();
     }
 
@@ -54,7 +53,7 @@ contract SendFundsOnSameChain is Script {
         uint256[] memory amounts = new uint256[](1);
         chainIds[0] = chainId;
         amounts[0] = AMOUNT;
-        sendFundsFromSameChain(mainContract, USER_B, chainIds, amounts);
+        sendFundsFromSameChain(mainContract, chainIds, amounts);
     }
 
     function run() public {
@@ -69,16 +68,13 @@ contract SendFundsOn_2Chains is Script {
     address constant USER_B = 0xa60f738a60BCA515Ac529b7335EC7CB2eE3891d2;
     uint256 constant AMOUNT_A = 300e18;
     uint256 constant AMOUNT_B = 200e18;
+    uint256 constant DESTINATION_CHAIN_ID = 80001;
+    uint256 constant TOTAL_AMOUNT = 500e18;
 
-    function sendFundsOn_2Chains(
-        address _mainContract,
-        address _user,
-        uint256[] memory _chainIds,
-        uint256[] memory _amounts
-    ) public {
+    function sendFundsOn_2Chains(address _mainContract, uint256[] memory _chainIds, uint256[] memory _amounts) public {
         vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
         MainContract mainContract = MainContract(_mainContract);
-        mainContract.sendAssets(_user, _chainIds, _amounts);
+        mainContract.sendAssets(USER_B, TOTAL_AMOUNT, DESTINATION_CHAIN_ID, _chainIds, _amounts);
         vm.stopBroadcast();
     }
 
@@ -91,7 +87,7 @@ contract SendFundsOn_2Chains is Script {
         chainIds[1] = CHAIN_B;
         amounts[0] = AMOUNT_A;
         amounts[1] = AMOUNT_B;
-        sendFundsOn_2Chains(mainContract, USER_B, chainIds, amounts);
+        sendFundsOn_2Chains(mainContract, chainIds, amounts);
     }
 
     function run() public {
@@ -108,16 +104,13 @@ contract SendFundsOn_3Chains is Script {
     uint256 constant AMOUNT_A = 300e18;
     uint256 constant AMOUNT_B = 200e18;
     uint256 constant AMOUNT_C = 600e18;
+    uint256 constant DESTINATION_CHAIN_ID = 11155111;
+    uint256 constant TOTAL_AMOUNT = 1100e18;
 
-    function sendFundsOn_3Chains(
-        address _mainContract,
-        address _user,
-        uint256[] memory _chainIds,
-        uint256[] memory _amounts
-    ) public {
+    function sendFundsOn_3Chains(address _mainContract, uint256[] memory _chainIds, uint256[] memory _amounts) public {
         vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
         MainContract mainContract = MainContract(_mainContract);
-        mainContract.sendAssets(_user, _chainIds, _amounts);
+        mainContract.sendAssets(USER_B, TOTAL_AMOUNT, DESTINATION_CHAIN_ID, _chainIds, _amounts);
         vm.stopBroadcast();
     }
 
@@ -132,13 +125,10 @@ contract SendFundsOn_3Chains is Script {
         amounts[0] = AMOUNT_A;
         amounts[1] = AMOUNT_B;
         amounts[2] = AMOUNT_C;
-        sendFundsOn_3Chains(mainContract, USER_B, chainIds, amounts);
+        sendFundsOn_3Chains(mainContract, chainIds, amounts);
     }
 
     function run() public {
         sendFundsOn_3ChainsUsingConfigs();
     }
 }
-
-//[200000000000000000000, 300000000000000000000, 600000000000000000000]
-//[43113, 80001, 11155111]

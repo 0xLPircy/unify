@@ -28,17 +28,20 @@ contract MainContract {
         s_treasuryCrossChain = _treasuryCrossChain;
     }
 
-    function sendAssets(address _to, uint256[] memory _chainIds, uint256[] memory _amounts)
-        external
-        isZeroAddress(_to)
-    {
+    function sendAssets(
+        address _to,
+        uint256 _totalAmount,
+        uint256 _destinationChainId,
+        uint256[] memory _chainIds,
+        uint256[] memory _amounts
+    ) external isZeroAddress(_to) {
         if (_chainIds.length != _amounts.length) {
             revert MainContract__UnequalArray();
         }
 
         // call CCIP contract to transfer funds to the `chainIds[i]` chain treasury address
         TreasuryCrossChain(payable(s_treasuryCrossChain)).sendAssetsToTreasury(
-            msg.sender, _chainIds, _amounts, tx_counter
+            msg.sender, _to, _totalAmount, _destinationChainId, _chainIds, _amounts, tx_counter
         );
 
         emit MainContract__AssetsSent(_to, _amounts[0], tx_counter);
