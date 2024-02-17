@@ -2,6 +2,7 @@ import React from 'react';
 import { Footer } from '../_components';
 import Image from 'next/image';
 import { DeductionSection, FundsSection, TransferSection } from '../_container';
+import GoldRushComp from '../_components/Dashboard/GoldRushComp';
 
 const DashboardPage = () => {
   return (
@@ -19,7 +20,7 @@ const DashboardPage = () => {
           <TransferSection />
           <div className="flex flex-col gap-4">
             <DeductionSection />
-            <h1>HEy</h1>
+            <GoldRushComp />
           </div>
         </div>
       </div>
