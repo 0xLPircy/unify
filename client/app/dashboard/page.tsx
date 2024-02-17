@@ -3,6 +3,7 @@ import { Footer } from '../_components';
 import Image from 'next/image';
 import { DeductionSection, FundsSection, TransferSection } from '../_container';
 import GoldRushComp from '../_components/Dashboard/GoldRushComp';
+import { useCovalent, useSearch } from '@covalenthq/goldrush-kit';
 
 const DashboardPage = () => {
   return (
