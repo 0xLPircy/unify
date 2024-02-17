@@ -35,12 +35,11 @@ contract MainContract {
         if (_chainIds.length != _amounts.length) {
             revert MainContract__UnequalArray();
         }
-        for (uint256 i = 0; i < _chainIds.length; i++) {
-            // call CCIP contract to transfer funds to the `chainIds[i]` chain treasury address
-            TreasuryCrossChain(payable(s_treasuryCrossChain)).sendAssetsToTreasury(
-                msg.sender, _amounts[i], _chainIds[i], tx_counter
-            );
-        }
+
+        // call CCIP contract to transfer funds to the `chainIds[i]` chain treasury address
+        TreasuryCrossChain(payable(s_treasuryCrossChain)).sendAssetsToTreasury(
+            msg.sender, _chainIds, _amounts, tx_counter
+        );
 
         emit MainContract__AssetsSent(_to, _amounts[0], tx_counter);
 
