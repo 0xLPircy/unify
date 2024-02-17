@@ -87,120 +87,50 @@ endif
 
 # Commands for Local
 
-deployBasicUSDC:
+deployCrossChain:
+	@forge script script/deployCrossChain.s.sol:DeployCrossChain $(NETWORK_ARGS) 
+	
+deployBasicUSDC: 
 	@forge script script/DeployBasicUSDC.s.sol:DeployBasicUSDC $(NETWORK_ARGS)
 
-deployTreasury:
+deployTreasury: 
 	@forge script script/DeployTreasury.s.sol:DeployTreasury $(NETWORK_ARGS)
+
+mintBasicUSDCToTreasury:
+	@forge script script/interactions/BasicUSDC_i.s.sol:MintUSDCToTreasuryContracts $(NETWORK_ARGS)
+
+mintUSDCToAddress:
+	@forge script script/interactions/BasicUSDC_i.s.sol:MintUSDCToAddress $(NETWORK_ARGS)
+
+approveUSDCToTreasury:
+	@forge script script/interactions/BasicUSDC_i.s.sol:ApproveUSDCToTreasury $(NETWORK_ARGS)
 
 deployUtils:
 	@forge script script/DeployUtils.s.sol:DeployUtils $(NETWORK_ARGS)
 
-setToolIndexOnUtils:
-	@forge script script/Interactions.s.sol:SetToolIndexOnUtils $(NETWORK_ARGS)
+setUpUtils:
+	@forge script script/interactions/Utils_i.s.sol:SetUpUtils $(NETWORK_ARGS)
 
-setChainSelectorOnUtils:
-	@forge script script/Interactions.s.sol:SetChainSelectorOnUtils $(NETWORK_ARGS)	
+deployTreasuryCrossChain: 
+	@forge script script/DeployTreasuryCrossChain.s.sol:DeployTreasuryCrossChain $(NETWORK_ARGS)
 
+setTreasuryCrossChainAddressOnUtils:
+	@forge script script/interactions/Utils_i.s.sol:SetTreasuryCrossChainAddress $(NETWORK_ARGS)
 
+deployMainContract:
+	@forge script script/DeployMainContract.s.sol:DeployMainContract $(NETWORK_ARGS)
 
-deployMainContractDeployer:
-	@forge script script/DeployMainContractDeployer.s.sol:DeployMainContractDeployer $(NETWORK_ARGS)
+sendFundsOnSameChain:
+	@forge script script/interactions/MainContract_i.s.sol:SendFundsOnSameChain $(NETWORK_ARGS)
 
+sendFundsOn_2Chains:
+	@forge script script/interactions/MainContract_i.s.sol:SendFundsOn_2Chains $(NETWORK_ARGS)
 
-setUpDeployer:
-	@forge script script/Interactions.s.sol:SetUpTheDeployer $(NETWORK_ARGS)
+sendFundsOn_3Chains:
+	@forge script script/interactions/MainContract_i.s.sol:SendFundsOn_3Chains $(NETWORK_ARGS) -vvvvv
 
-setUtilsOnMain:
-	@forge script script/Interactions.s.sol:SetUtilsOnMain $(NETWORK_ARGS)
+setTreasuryCrossChainAddressOnMainContract:
+	@forge script script/interactions/MainContract_i.s.sol:SetTreasuryCrossChainAddress $(NETWORK_ARGS)
 
-deployChainlinkCCIP:
-	@forge script script/DeployChainlinkCCIP.s.sol:DeployChainlinkCCIP $(NETWORK_ARGS)
-
-setUtilsOnCCIP:
-	@forge script script/Interactions.s.sol:SetUtilsOnCCIP $(NETWORK_ARGS)
-
-setCCIPGasLimit:
-	@forge script script/Interactions.s.sol:SetCCIPGasLimit $(NETWORK_ARGS)
-
-setChainlinkCCIPOnDeployer:
-	@forge script script/Interactions.s.sol:SetChainlinkCCIPOnDeployer $(NETWORK_ARGS)
-
-startWalletCreation:
-	@forge script script/Interactions.s.sol:StartWalletCreation $(NETWORK_ARGS) -vvvvv
-
-setToolForChainIdForMainContract:
-	@forge script script/Interactions.s.sol:SetToolForChainIdForMainContract $(NETWORK_ARGS)
-
-setCCIPForMainContract:
-	@forge script script/Interactions.s.sol:SetCCIPForMainContract $(NETWORK_ARGS)
-
-mintUSDCForWallets:
-	@forge script script/Interactions.s.sol:MintUSDCForWallets $(NETWORK_ARGS)
-
-sendMoney:
-	@forge script script/Interactions.s.sol:SendMoney $(NETWORK_ARGS)
-
-deployHyperlaneAPI:
-	@forge script script/DeployHyperlaneAPI.s.sol:DeployHyperlaneAPI $(NETWORK_ARGS)
-	
-
-# Commands for Testnets
-
-deployBasicUSDCOnTestnets:
-	make deployBasicUSDC ARGS="--network mumbai" && make deployBasicUSDC ARGS="--network sepolia"
-
-deployTreasuryOnTestnets:
-	make deployTreasury ARGS="--network mumbai" && make deployTreasury ARGS="--network sepolia"
-
-deployUtilsOnTestnets:
-	make deployUtils ARGS="--network mumbai" && make deployUtils ARGS="--network sepolia"
-
-setToolIndexOnUtilsOnTestnets:
-	make setToolIndexOnUtils ARGS="--network mumbai" && make setToolIndexOnUtils ARGS="--network sepolia"
-
-setChainSelectorOnUtilsOnTestnets:
-	make setChainSelectorOnUtils ARGS="--network mumbai" && make setChainSelectorOnUtils ARGS="--network sepolia"
-
-deployMainContractDeployerOnTestnets:
-	make deployMainContractDeployer ARGS="--network mumbai" && make deployMainContractDeployer ARGS="--network sepolia"
-
-setUpDeployerOnTestnets:
-	make setUpDeployer ARGS="--network mumbai" && make setUpDeployer ARGS="--network sepolia"
-
-
-deployChainlinkCCIPOnTestnets:
-	make deployChainlinkCCIP ARGS="--network mumbai" && make deployChainlinkCCIP ARGS="--network sepolia"
-
-setUtilsOnCCIPOnTestnets:
-	make setUtilsOnCCIP ARGS="--network mumbai" && make setUtilsOnCCIP ARGS="--network sepolia"
-
-setCCIPGasLimitOnTestnets:
-	make setCCIPGasLimit ARGS="--network mumbai" && make setCCIPGasLimit ARGS="--network sepolia"
-
-setChainlinkCCIPOnDeployerOnTestnets:
-	make setChainlinkCCIPOnDeployer ARGS="--network mumbai" && make setChainlinkCCIPOnDeployer ARGS="--network sepolia"
-
-startWalletCreationOnTestnets:
-	make startWalletCreation ARGS="--network mumbai"
-
-
-setUtilsOnMainOnTestnets:
-	make setUtilsOnMain ARGS="--network mumbai" && make setUtilsOnMain ARGS="--network sepolia"
-
-
-
-setToolForChainIdForMainContractOnTestnets:
-	make setToolForChainIdForMainContract ARGS="--network mumbai" && make setToolForChainIdForMainContract ARGS="--network sepolia"
-
-setCCIPForMainContractOnTestnets:
-	make setCCIPForMainContract ARGS="--network mumbai" && make setCCIPForMainContract ARGS="--network sepolia"
-	
-mintUSDCForWalletsOnTestnets:
-	make mintUSDCForWallets ARGS="--network mumbai" && make mintUSDCForWallets ARGS="--network sepolia"
-
-sendMoneyOnTestnets:
-	make sendMoney ARGS="--network mumbai"
-
-deployHyperlaneAPIOnTestnets:
-	make deployHyperlaneAPI ARGS="--network mumbai" && make deployHyperlaneAPI ARGS="--network sepolia"
+setUtilsOnTreasuryCrossChain:
+	@forge script script/interactions/TreasuryCrossChain_i.s.sol:SetUtils $(NETWORK_ARGS)
