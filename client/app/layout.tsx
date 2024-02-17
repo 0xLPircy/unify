@@ -4,6 +4,7 @@ import { Inter, Marcellus, Montserrat } from 'next/font/google';
 import './globals.css';
 import { Navbar } from './_components';
 import GoldKitProvider from './_components/Providers/GoldKitProvider';
+import ParticleAuthProvider from './_components/Providers/ParticleAuthProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 const marcellus = Marcellus({ weight: ['400'], subsets: ['latin'] });
@@ -30,10 +31,12 @@ export default function RootLayout({
           montserrat.className
         )} font-light bg-[#f1f1f1]`}
       >
-        <GoldKitProvider>
-          <Navbar />
-          {children}
-        </GoldKitProvider>
+        <ParticleAuthProvider>
+          <GoldKitProvider>
+            <Navbar />
+            {children}
+          </GoldKitProvider>
+        </ParticleAuthProvider>
       </body>
     </html>
   );
