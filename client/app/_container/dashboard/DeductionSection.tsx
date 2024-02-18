@@ -1,15 +1,21 @@
 'use client';
 import { ChainSubtotal, DeductionTotal } from '@/app/_components';
 import { chains, deductions } from '@/app/_lib/constants';
+import { useEthereum } from '@particle-network/auth-core-modal';
 import Image from 'next/image';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const DeductionSection = () => {
-  const transferHandler = () => {
-    // TRANSFER CLICKED
+  const { sendTransaction, provider } = useEthereum()
 
+
+  const transferHandler = async () => {
+    // TRANSFER CLICKED
+    const txnx = await sendTransaction({
+      to: ""
+    })
     setTimeout(() => {
       // FUNCTION FOR TRANSFER
       // INTEGRA
@@ -52,8 +58,8 @@ const DeductionSection = () => {
         {/* deduction total */}
         <DeductionTotal deductions={deductions} />
         <button
-          onClick={() => {
-            transferHandler();
+          onClick={async () => {
+            await transferHandler();
           }}
           className="mt-2 w-[100%] text-[21px] font-normal 
           bg-[#0BD262] text-[#000000] 

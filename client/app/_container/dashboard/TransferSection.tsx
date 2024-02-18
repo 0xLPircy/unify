@@ -81,7 +81,7 @@ const TransferSection = () => {
               className="rounded-[12px] m-[3px] border-[0.3px] border-solid border-[#BDCFD0] hover:text-[18px] hover:px-[4px]"
             >
               <option value={'USDC'}>USDC</option>
-              <option value={'FXD'}>FXD</option>
+              {/* <option value={'FXD'}>FXD</option> */}
             </select>
           </div>
           {/* btn */}

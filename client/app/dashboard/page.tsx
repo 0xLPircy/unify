@@ -5,8 +5,9 @@ import Image from 'next/image';
 import { DeductionSection, FundsSection, TransferSection } from '../_container';
 import GoldRushComp from '../_components/Dashboard/GoldRushComp';
 import { useCovalent, useSearch } from '@covalenthq/goldrush-kit';
-import { useAccount } from '@particle-network/connectkit';
+import { useAccount, useAccountInfo } from '@particle-network/connectkit';
 import { useRouter } from 'next/navigation';
+import { getSmartAccountAddress } from '@particle-network/auth-core';
 
 const DashboardPage = () => {
   const account = useAccount()
@@ -16,6 +17,13 @@ const DashboardPage = () => {
     if (!account) {
       router.push('/getStarted')
     }
+    (async () => {
+      // const user = await getSmartAccountAddress({ //optional: account abstraction wallet UI config (displaying the smart account rather than EOA)
+      //   name: "SIMPLE",
+      //   version: "1.0.0"
+      // })
+      // console.log("user>>>>>>", user)
+    })()
   }, [account, router])
   return (
     <>

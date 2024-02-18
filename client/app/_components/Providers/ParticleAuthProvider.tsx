@@ -15,10 +15,10 @@ const ParticleAuthProvider = ({ children }: { children: React.ReactNode }) => {
             connectors: [
                 ...evmWallets({ projectId: "2f6b4ed8651cde26d63d26308aa7edb4", showQrModal: true }),
             ],
-            erc4337: { //optional: account abstraction wallet UI config (displaying the smart account rather than EOA)
-                name: "SIMPLE",
-                version: "1.0.0"
-            },
+            // erc4337: { //optional: account abstraction wallet UI config (displaying the smart account rather than EOA)
+            //     name: "SIMPLE",
+            //     version: "1.0.0"
+            // },
             wallet: { //optional: particle wallet config
                 visible: true,
                 customStyle: {

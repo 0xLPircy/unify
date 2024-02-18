@@ -2,7 +2,7 @@ import { CovalentClient } from "@covalenthq/client-sdk";
 import { Network, TokenBalances } from "./types";
 import { getBalance } from "./utils";
 
-const client = new CovalentClient("YOUR_API_KEY");
+const client = new CovalentClient("cqt_rQHDQTCDH4XvmFpbvjjxwY8FR9rW");
 
 const getTokenBalances = async (walletAddress: string): Promise<TokenBalances> => {
     const fuji_resp = await client.BalanceService.getTokenBalancesForWalletAddress(Network.FUJI, walletAddress);
