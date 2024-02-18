@@ -30,7 +30,6 @@ const DashboardPage = () => {
         <div className="flex flex-row pt-0 z-10 h-[100%]">
           <FundsSection />
           <TransferSection />
-
           <DeductionSection />
         </div>
       </div>
