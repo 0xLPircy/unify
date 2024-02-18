@@ -4,6 +4,10 @@
 3. Mint USDC to Treasury
 4. Mint USDC to **UserA** 
 5. Approve USDC to Treasury by **UserA**
+   1. ```make approveUSDCToTreasury ARGS="--network fuji"```
+   2. ```make approveUSDCToTreasury ARGS="--network sepolia"```
+   3. ```make approveUSDCToTreasury ARGS="--network mumbai"```
+
 6. Deploy Utils
 7. Setup Utils
 8. Deploy TreasuryCrossChain
@@ -63,6 +67,13 @@
 
 
 forge verify-contract 0x74dc19725cC7E6d81f762adD93bA7f508eAaB454 src/TreasuryCrossChain.sol:TreasuryCrossChain --verifier-url 'https://api.routescan.io/v2/network/testnet/evm/43113/etherscan' --etherscan-api-key "K5G7FZP97VZW2VNQ7WUT7HQZ4PTJ9GKBCG" --num-of-optimizations 200 --constructor-args $(cast abi-encode "constructor(address _router, address _treasury, address _utils, address _linkToken)"  0xF694E193200268f9a4868e4Aa017A0118C9a8177 0x35343628C66991404ecE443083b90B0d1CDDe4Fa 0x55104Ed9ab9f3b58dB55D60429091cA203302FaF 0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846 )
+
+forge verify-contract \
+    --chain-id 80001 \
+    --etherscan-api-key 298NB8HCTYIPCJP3DTFR2ZY6UM3YT4FE8H \
+    0x55104Ed9ab9f3b58dB55D60429091cA203302FaF \
+    src/BasicUSDC.sol:BasicUSDC  \
+    --compiler-version 0.8.20
 
 
 // [200000000000000000000, 300000000000000000000, 600000000000000000000]
