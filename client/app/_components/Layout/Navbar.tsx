@@ -21,18 +21,21 @@ const Navbar = () => {
     });
   }, [notifs]);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleRedirectHome = () => {
-    router.push('/')
-  }
+    router.push('/');
+  };
 
   const authCore = useAuthCore();
 
   return (
     <div className="w-[100vw] flex flex-row items-center justify-between py-[6px] pl-32 pr-20 border-b-[1px] border-solid border-[#1c1b1f] bg-[#f1f1f1] z-40">
       {/* logo name */}
-      <div className="self-center place-self-start grid grid-flow-col gap-[10px] w-fit" onClick={handleRedirectHome}>
+      <div
+        className="self-center place-self-start grid grid-flow-col gap-[10px] w-fit"
+        onClick={handleRedirectHome}
+      >
         <Image
           src={'/logo.svg'}
           alt="logo"
@@ -149,11 +152,11 @@ const Navbar = () => {
           Get Started
         </Link>
       )}
-      {
-        currentPage == '/getStarted' && <div>
+      {currentPage == '/getStarted' && (
+        <div>
           <ConnectWallet />
         </div>
-      }
+      )}
       {/* {(currentPage == '/create' ||
         currentPage == '/login' ||
         currentPage == '/loader') && (

@@ -12,6 +12,19 @@
   padding: 0;
   transition: all 0.3s;
 }
+
+th,
+td,
+table {
+  border: #000000 solid 1px !important;
+  background: #fece00 !important;
+}
+
+.test-class > div > div > div {
+  border: #000000 solid 1px !important;
+  background: #fece00 !important;
+}
+
 .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success {
   background-color: #000 !important;
 }
