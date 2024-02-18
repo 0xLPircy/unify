@@ -28,7 +28,7 @@ const Hero = () => {
             className="self-center"
           />
           <Link href={'/getStarted'} className="text-[24px] self-center">
-            Start Transferring
+            Get Started
           </Link>
         </button>
       </div>

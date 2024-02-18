@@ -20,11 +20,23 @@ const ParticleAuthProvider = ({ children }: { children: React.ReactNode }) => {
                 version: "1.0.0"
             },
             wallet: { //optional: particle wallet config
+                visible: true,
                 customStyle: {
                     supportChains: [AvalancheTestnet, EthereumSepolia, PolygonMumbai],
+                    fiatCoin: 'USD'
                 },
+                // entryPosition: 
             },
-        }}>
+            promptSettingConfig: { //optional: particle security account config
+                //prompt set payment password. 0: None, 1: Once(default), 2: Always
+                promptPaymentPasswordSettingWhenSign: 0,
+                //prompt set master password. 0: None(default), 1: Once, 2: Always
+                promptMasterPasswordSettingWhenLogin: 0
+            },
+        }}
+            language={'en'}   //optional：localize, default en
+            walletSort={['Particle Auth', 'Wallet']} //optional：walelt order
+        >
             {children}
         </ModalProvider>
     )

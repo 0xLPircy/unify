@@ -1,16 +1,27 @@
+"use client"
 import Image from 'next/image';
-import { Footer, Navbar } from '../_components';
+import { ConnectWallet, Footer, Navbar } from '../_components';
 import Link from 'next/link';
+import { useAccount, useParticleProvider } from '@particle-network/connectkit';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const GetStartedPage = () => {
-  // const [showPassword1, setShowPassword1] = useState(false);
-  // const [showPassword2, setShowPassword2] = useState(false);
-  // const [linkSent, setLinkSent] = useState(false);
+  const account = useAccount()
+  const provider = useParticleProvider()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (account && provider) {
+      router.push('/dashboard')
+    }
+  }, [account, provider, router])
+
   return (
     <>
       <main className="w-[100vw] h-[90vh] bg-[#F1F1F1] grid md:grid-cols-2 grid-flow-row">
         <div className="md:w-[600px] w-[510px] py-4 flex flex-col justify-center gap-4 px-[64px] place-self-center">
-          <Link
+          {/* <Link
             href={'/login'}
             className="hover:shadow-[0px_6px_0px_0px_#091D31] h-fit rounded-[8px] px-8 py-3 flex gap-4 justify-center border-[1px] border-solid border-[#091D31]"
           >
@@ -36,20 +47,22 @@ const GetStartedPage = () => {
             />
             <h3 className="text-[24px] self-center">Metamask</h3>
           </Link>
-          <h2 className="text-[24px] self-center place-self-center">or</h2>
-          <Link
-            href={'/create'}
+          <h2 className="text-[24px] self-center place-self-center">or</h2> */}
+          {/* <Link
+            href={'/dashboard'}
             className="hover:shadow-[0px_6px_0px_0px_#091D31] h-fit rounded-[8px] px-8 py-3 flex gap-4 justify-center border-[1px] border-solid border-[#091D31]"
           >
             <Image
-              src={'/safeWallet.svg'}
+              src={'/wallet.svg'}
               alt="login email"
               height={40}
               width={40}
               className="self-center"
             />
-            <h3 className="text-[24px] self-center">Log in</h3>
-          </Link>
+            <h3 className="text-[24px] self-center">Connect</h3>
+          </Link> */}
+          {/* TODO: CONNECT BUTTON */}
+          <ConnectWallet />
         </div>
         <div className="w-[100%] h-[100%]">
           <Image

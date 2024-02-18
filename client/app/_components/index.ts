@@ -12,6 +12,10 @@ import ChatProfile from './ChatProfile';
 import LhsChat from './LhsChat';
 import ChatRecieved from './ChatRecieved';
 import ChatSent from './ChatSent';
+import ParticleAuthProvider from './Providers/ParticleAuthProvider';
+import GoldKitProvider from './Providers/GoldKitProvider'
+import ConnectWallet from './ConnectWallet'
+import AccountInfo from './AccountInfo'
 
 export {
   DeductionTotal,
@@ -27,5 +31,9 @@ export {
   LhsChat,
   ChatRecieved,
   ChatSent,
-  TotalFunds
+  TotalFunds,
+  ParticleAuthProvider,
+  GoldKitProvider,
+  ConnectWallet,
+  AccountInfo
 };
