@@ -10,16 +10,6 @@ import { useAuthCore } from '@particle-network/auth-core-modal';
 const Navbar = () => {
   const currentPage = usePathname();
   // console.log(currentPage);
-  const [notifClicked, setNotifClicked] = useState(false);
-  console.log(currentPage);
-  const [unreadNotifs, setUnreadNotifs] = useState(0);
-  // useEffect(() => {
-  //   notifs.map((notif) => {
-  //     if (notif.status == 'unread') {
-  //       setUnreadNotifs(unreadNotifs + 1);
-  //     }
-  //   });
-  // }, [notifs]);
 
   const router = useRouter();
 
@@ -105,41 +95,9 @@ const Navbar = () => {
                   className="place-self-center self-center"
                 />
                 <h3 className="text-[21px]">
-                  {unreadNotifs ? unreadNotifs : 'No'} New
+                  No New
                 </h3>
               </div>
-              {/* notif drop down */}
-              {notifClicked && (
-                <div className="z-50 absolute bg-[#f1f1f1b9] p-4 mt-[48px] h-[500px] rounded-[24px] border-[1px] border-solid border-[#cfe3e2] flex flex-col gap-[16px] overflow-scroll">
-                  {/* head cross */}
-                  <div className="w-[100%] grid grid-flow-col gap-3 self-start place-self-center p-[10px] rounded-full bg-[#48637C]">
-                    <div className="grid grid-flow-col text-[#ffffff] gap-1">
-                      <Image
-                        src={'/bell.svg'}
-                        width={15}
-                        height={15}
-                        alt="updates"
-                        className="self-center place-self-start ml-[5px]"
-                      />
-                      <h3 className="text-[15px] self-center place-self-start">
-                        Updates
-                      </h3>
-                    </div>
-                    <Image
-                      src={'/close.svg'}
-                      alt="cross"
-                      width={24}
-                      height={24}
-                      className="self-center place-self-end hover:opacity-75 cursor-pointer hover:p-[1px] "
-                      onClick={() => setNotifClicked(!notifClicked)}
-                    />
-                  </div>
-                  {/* transaction */}
-                  {notifs.map((notif) => {
-                    return <NotifTransact key={notif} notif={notif} />;
-                  })}
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -153,7 +111,7 @@ const Navbar = () => {
       )}
       {currentPage == '/getStarted' && (
         <div>
-          <ConnectWallet />
+          <ConnectWallet style={"text-[18px] font-normal bg-[#48637C] text-[#ffffff] hover:shadow-[0px_6px_0px_0px_#091D31] h-fit w-fit rounded-[8px] px-8 py-2 flex gap-4 justify-center border-[1px] border-solid border-[#091D31] z-50"} isNav={false} />
         </div>
       )}
       {/* {(currentPage == '/create' ||
