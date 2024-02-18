@@ -12,13 +12,6 @@ import Image from 'next/image';
 const WalletInfoPage = () => {
   return (
     <div className="px-20 py-16 bg-[linear-gradient(299deg,_#FFFCEA_0%,_#FFF8D4_0.01%,_#F8FCFF_100%)]">
-      <Image
-        src={'/mainLanding/landing-nettop.png'}
-        width={1200}
-        height={900}
-        alt="bg"
-        className="fixed top-[100px] opacity-30 self-center z-[0]"
-      />
       <div className="z-30">
         <h1 className="text-start text-[36px] w-[100%] font-bold">
           Token Transfers
@@ -46,6 +39,13 @@ const WalletInfoPage = () => {
           chain_names={['eth-mainnet', 'eth-sepolia', 'matic-mumbai']} //sample list of chains
         />
       </div>
+      <Image
+        src={'/mainLanding/landing-nettop.png'}
+        width={1200}
+        height={900}
+        alt="bg"
+        className="fixed top-[100px] opacity-20 self-center z-[0]"
+      />
     </div>
   );
 };

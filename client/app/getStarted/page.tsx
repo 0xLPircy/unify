@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import Image from 'next/image';
 import { ConnectWallet, Footer, Navbar } from '../_components';
 import Link from 'next/link';
@@ -7,15 +7,15 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 const GetStartedPage = () => {
-  const account = useAccount()
-  const provider = useParticleProvider()
-  const router = useRouter()
+  const account = useAccount();
+  const provider = useParticleProvider();
+  const router = useRouter();
 
   useEffect(() => {
     if (account && provider) {
-      router.push('/dashboard')
+      router.push('/dashboard');
     }
-  }, [account, provider, router])
+  }, [account, provider, router]);
 
   return (
     <>
@@ -62,7 +62,25 @@ const GetStartedPage = () => {
             <h3 className="text-[24px] self-center">Connect</h3>
           </Link> */}
           {/* TODO: CONNECT BUTTON */}
-          <ConnectWallet />
+          <div className="place-self-center ">
+            <Image
+              src={'/mainLanding/landing-nettop.png'}
+              alt="net"
+              className="absolute left-0 top-0 z-0 max-w-[50vw] max-h-[100%]"
+              width={900}
+              height={900}
+            />
+            <div className="z-10">
+              <ConnectWallet />
+            </div>
+            <Image
+              src={'/landing32.png'}
+              alt="net"
+              className="absolute left-0 bottom-0 z-0 max-w-[50vw] max-h-[100%]"
+              width={300}
+              height={300}
+            />
+          </div>
         </div>
         <div className="w-[100%] h-[100%]">
           <Image
