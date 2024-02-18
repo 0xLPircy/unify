@@ -48,25 +48,24 @@ const Navbar = () => {
       {/* nav name notif */}
       {(currentPage == '/dashboard' ||
         currentPage == '/mynfts' ||
-        currentPage == '/chat') && (
+        currentPage == '/walletInfo') && (
           <div className="grid grid-flow-col gap-8 self-center place-self-end">
             {/* nav items */}
             <div className="grid grid-flow-col self-center place-self-center pl-8 gap-8">
-              {/* <Link
-              href={'/'}
-              className={`text-[21px] hover:border-b-2 hover:font-semibold hover:cursor-pointer
-            ${
-              currentPage == '/chat' ? 'border-b-2' : ''
-            } border-solid border-[#1c1b1f]`}
-            >
-              Chat
-            </Link> */}
               <Link
                 href={'/dashboard'}
                 className={`text-[21px] hover:border-b-2 hover:font-semibold hover:cursor-pointer ${currentPage == '/dashboard' ? 'border-b-2' : ''
                   } border-solid border-[#1c1b1f]`}
               >
                 Transfer
+              </Link>
+              <Link
+                href={'/walletInfo'}
+                className={`text-[21px] hover:border-b-2 hover:font-semibold hover:cursor-pointer
+            ${currentPage == '/walletInfo' ? 'border-b-2' : ''
+                  } border-solid border-[#1c1b1f]`}
+              >
+                Info
               </Link>
               {/* <Link
               href={'/mynfts'}
