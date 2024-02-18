@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React, { useEffect } from 'react';
 import { Footer } from '../_components';
 import Image from 'next/image';
@@ -9,14 +9,14 @@ import { useAccount } from '@particle-network/connectkit';
 import { useRouter } from 'next/navigation';
 
 const DashboardPage = () => {
-  const account = useAccount()
-  const router = useRouter()
+  const account = useAccount();
+  const router = useRouter();
 
   useEffect(() => {
     if (!account) {
-      router.push('/getStarted')
+      router.push('/getStarted');
     }
-  }, [account, router])
+  }, [account, router]);
   return (
     <>
       <div className="z-0 w-[100vw] h-[91vh] flex flex-col bg-[linear-gradient(299deg,_#FFFCEA_0%,_#FFF8D4_0.01%,_#F8FCFF_100%)]">
@@ -30,10 +30,8 @@ const DashboardPage = () => {
         <div className="flex flex-row pt-0 z-10 h-[100%]">
           <FundsSection />
           <TransferSection />
-          <div className="flex flex-col gap-4">
-            <DeductionSection />
-            <GoldRushComp />
-          </div>
+
+          <DeductionSection />
         </div>
       </div>
     </>

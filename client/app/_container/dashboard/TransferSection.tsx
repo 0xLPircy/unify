@@ -10,10 +10,12 @@ const TransferSection = () => {
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState<number>();
   const [currency, setCurrency] = useState('USDC');
+  const [network, setNetwork] = useState('');
   const previewHandler = () => {
     console.log(recipient);
     console.log(amount);
     console.log(currency);
+    console.log(network);
     setTimeout(() => {
       // FUNCTION FOR DEDUCTION
       // INTEGRA
@@ -52,9 +54,21 @@ const TransferSection = () => {
       {/* network */}
       <div className="grid gap-2">
         <h3 className="text-start text-[21px]">Select Network</h3>
-        <div className="grid grid-flow-col overflow-x-scroll gap-[8px]">
+        <div className="grid grid-flow-col overflow-x-scroll gap-[8px] place-content-start">
           {chains.map((chain) => (
-            <ChooseChain chain={chain.name} key={chain.name} />
+            <div
+              key={chain.name}
+              onClick={() => {
+                setNetwork(chain.name == network ? '' : chain.name);
+              }}
+              className={
+                `bg-[#CFE3E2] rounded-[8px] px-[7px] grid w-[70px] h-[70px] 
+                hover:border-b-[4px] hover:border-t-[4px] border-solid border-[#2f2f2f] mb-3 border-[0.1px]` +
+                (network == chain.name ? ' border-b-[5px] border-[2px]' : '')
+              }
+            >
+              <ChooseChain chain={chain.name} key={chain.name} />
+            </div>
           ))}
         </div>
       </div>
