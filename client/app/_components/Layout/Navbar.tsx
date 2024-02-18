@@ -93,7 +93,7 @@ const Navbar = () => {
               {/* notif */}
               <div
                 className="px-5 grid grid-flow-col gap-[10px] bg-[#48637C] hover:font-normal hover:opacity-75 py-[6px] rounded-r-full text-[#ffffff] hover:cursor-pointer"
-                onClick={() => setNotifClicked(!notifClicked)}
+                onClick={() => authCore.openWallet()}
               >
                 <Image
                   src={'/notifications.png'}

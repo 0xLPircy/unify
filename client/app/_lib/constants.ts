@@ -202,3 +202,5 @@ export const notifs: {
       link: '/dashboard'
     }
   ];
+
+export const CHAINS = ["ethereum", "avalanche", "polygon"]

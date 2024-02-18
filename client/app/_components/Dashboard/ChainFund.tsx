@@ -1,8 +1,7 @@
-import { userFunds } from '@/app/_lib/constants';
 import Image from 'next/image';
 import React from 'react';
 
-const ChainFund = ({ chain, bgCol }: any) => {
+const ChainFund = ({ chain, bgCol, userFunds }: any) => {
   return (
     <div
       className={`text-[#1C1B1F] grid grid-flow-col pt-2 pr-4 rounded-[16px] mr-3

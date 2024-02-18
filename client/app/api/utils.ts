@@ -11,9 +11,9 @@ const converToNumber = (value: bigint) => {
 }
 
 const getBalance = (response: Response<BalancesResponse>): number => {
-    let usdc_balance: number;
+    let usdc_balance: number = 0;
     response.data.items.filter((item) => {
-        if (item.contract_address === USDC_ADDRESS) {
+        if (item.contract_address === USDC_ADDRESS.toLocaleLowerCase()) {
             usdc_balance = converToNumber(item.balance);
         }
     });

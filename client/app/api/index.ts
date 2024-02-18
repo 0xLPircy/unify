@@ -1,27 +1,22 @@
 import { CovalentClient } from "@covalenthq/client-sdk";
 import { Network, TokenBalances } from "./types";
 import { getBalance } from "./utils";
+import { CHAINS } from "../_lib/constants";
 
 const client = new CovalentClient("cqt_rQHDQTCDH4XvmFpbvjjxwY8FR9rW");
 
-const getTokenBalances = async (walletAddress: string): Promise<TokenBalances> => {
-    const fuji_resp = await client.BalanceService.getTokenBalancesForWalletAddress(Network.FUJI, walletAddress);
-    // filter the response to get the token balance of USDC
-    const fuji_usdc_balance: number = getBalance(fuji_resp);
-
-    const mumbai_resp = await client.BalanceService.getTokenBalancesForWalletAddress(Network.MUMBAI, walletAddress);
-    // filter the response to get the token balance of USDC
-    const mumbai_usdc_balance: number = getBalance(mumbai_resp);
-
-    const sepolia_resp = await client.BalanceService.getTokenBalancesForWalletAddress(Network.SEPOLIA, walletAddress);
-    // filter the response to get the token balance of USDC
-    const sepolia_usdc_balance: number = getBalance(sepolia_resp);
-
-    const balances: TokenBalances = {
-        fuji: fuji_usdc_balance,
-        mumbai: mumbai_usdc_balance,
-        sepolia: sepolia_usdc_balance
-    }
+const getTokenBalances = async (walletAddress: string): Promise<TokenBalances[]> => {
+    const balances: TokenBalances[] = await Promise.all(
+        CHAINS.map(async chain => {
+            const res = await client.BalanceService.getTokenBalancesForWalletAddress(Network[chain], walletAddress);
+            // filter the response to get the token balance of USDC
+            const bal: number = getBalance(res);
+            return {
+                chain,
+                amount: bal
+            }
+        })
+    )
 
     console.log("Balances: ", balances);
     return balances;

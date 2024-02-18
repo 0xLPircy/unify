@@ -1,4 +1,5 @@
 "use client"
+import { USDC_ADDRESS } from '@/app/api/constant';
 import { AvalancheTestnet, EthereumSepolia, PolygonMumbai } from '@particle-network/chains';
 import { ModalProvider } from '@particle-network/connectkit';
 import '@particle-network/connectkit/dist/index.css';
@@ -23,8 +24,11 @@ const ParticleAuthProvider = ({ children }: { children: React.ReactNode }) => {
                 visible: true,
                 customStyle: {
                     supportChains: [AvalancheTestnet, EthereumSepolia, PolygonMumbai],
-                    fiatCoin: 'USD'
-                },
+                    fiatCoin: 'USD',
+                    displayTokenAddresses: [USDC_ADDRESS.toLocaleLowerCase()],
+                    supportAddToken: true,
+                    evmSupportWalletConnect: true
+                }, preload: true, topMenuType: 'close'
                 // entryPosition: 
             },
             promptSettingConfig: { //optional: particle security account config

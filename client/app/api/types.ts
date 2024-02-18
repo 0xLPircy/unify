@@ -1,13 +1,12 @@
 enum Network {
-    FUJI = 'avalanche-testnet',
-    MUMBAI = 'matic-mumbai',
-    SEPOLIA = 'eth-sepolia',
+    avalanche = 'avalanche-testnet',
+    polygon = 'matic-mumbai',
+    ethereum = 'eth-sepolia',
 }
 
 export type TokenBalances = {
-    fuji: number,
-    mumbai: number,
-    sepolia: number,
+    chain: string,
+    amount: number
 }
 
 export { Network };
