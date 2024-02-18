@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React, { useEffect } from 'react';
 import { Footer } from '../_components';
 import Image from 'next/image';
@@ -10,12 +10,12 @@ import { useRouter } from 'next/navigation';
 import { getSmartAccountAddress } from '@particle-network/auth-core';
 
 const DashboardPage = () => {
-  const account = useAccount()
-  const router = useRouter()
+  const account = useAccount();
+  const router = useRouter();
 
   useEffect(() => {
     if (!account) {
-      router.push('/getStarted')
+      router.push('/getStarted');
     }
     (async () => {
       // const user = await getSmartAccountAddress({ //optional: account abstraction wallet UI config (displaying the smart account rather than EOA)
@@ -38,10 +38,8 @@ const DashboardPage = () => {
         <div className="flex flex-row pt-0 z-10 h-[100%]">
           <FundsSection />
           <TransferSection />
-          <div className="flex flex-col gap-4">
-            <DeductionSection />
-            <GoldRushComp />
-          </div>
+
+          <DeductionSection />
         </div>
       </div>
     </>

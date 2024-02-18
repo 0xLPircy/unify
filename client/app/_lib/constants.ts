@@ -1,6 +1,6 @@
 export const chains: {
-  name: String;
-  bgProp: String;
+  name: string;
+  bgProp: string;
 }[] = [
     {
       name: 'ethereum',
