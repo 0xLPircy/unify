@@ -1,10 +1,12 @@
 'use client';
-import { curEns } from '@/app/_lib/constants';
+import { useEthereum } from '@particle-network/auth-core-modal';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import ClientOnly from '../ClientOnly';
 
 const TotalFunds = ({ userFunds }: any) => {
   const [totalAmount, setTotalAmount] = useState<number>(0);
+  const { address } = useEthereum()
 
   useEffect(() => {
     // Calculate the sum of amounts whenever 'deductions' change
@@ -23,9 +25,12 @@ const TotalFunds = ({ userFunds }: any) => {
           alt="pfp"
           width={72}
           height={72}
-          className="self-center place-self-start"
+          className="self-center place-self-start p-2"
         />
-        <h3 className="text-[24px] self-center place-self-start">{curEns}</h3>
+        {address && (
+          <ClientOnly>
+            <div className="text-[24px] self-center place-self-start">{address?.slice(0, 5)}...{address?.slice(38, 42)}</div>
+          </ClientOnly>)}
         {/* <Image
           className="self-center place-self-start mr-6 hover:border-[1px] border-solid border-[#48637C]"
           src={'/copy.svg'}
@@ -41,7 +46,6 @@ const TotalFunds = ({ userFunds }: any) => {
         <h1 className="text-center text-[54px] leading-[60px]">
           ${totalAmount}
         </h1>
-        <h4 className="text-center text-[16px]">*assets represented in USDC</h4>
       </div>
     </div>
   );

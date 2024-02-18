@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AccountInfo, ConnectWallet, NotifTransact } from '..';
 import Link from 'next/link';
-import { curEns, currentAddress, notifs } from '../../_lib/constants';
+import { notifs } from '../../_lib/constants';
 import { useAuthCore } from '@particle-network/auth-core-modal';
 
 const Navbar = () => {

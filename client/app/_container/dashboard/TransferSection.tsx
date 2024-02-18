@@ -1,37 +1,39 @@
 'use client';
 import { ChooseChain } from '@/app/_components';
 import { chains } from '@/app/_lib/constants';
+import { useAppContext } from '@/app/hooks/context/AppContext';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const TransferSection = () => {
-  const [recipient, setRecipient] = useState('');
-  const [amount, setAmount] = useState<number>();
-  const [currency, setCurrency] = useState('USDC');
-  const [network, setNetwork] = useState('');
-  const previewHandler = () => {
-    console.log(recipient);
-    console.log(amount);
-    console.log(currency);
-    console.log(network);
+const TransferSection = ({ userFunds }) => {
+  const { recipient, amount, network, setRecipient, setAmount, setNetwork, calculateDeductions } = useAppContext()
+
+  const previewHandler = async () => {
+    // console.log(calculateDeductions(userFunds, amount))
+
+    // try {
+    //   if (!amount && !network && !recipient) throw "Add amount & network"
+    //   toast.info('Calculating Deductions', { autoClose: false })
+    //   await calculateDeductions(userFunds, amount)
+    //   toast.success('Deductions Calculated')
+    // } catch (error) {
+    //   toast.error(error)
+    // }
     setTimeout(() => {
       // FUNCTION FOR DEDUCTION
       // INTEGRA
-      const resolveAfter3Sec = new Promise((resolve) =>
-        setTimeout(resolve, 3000)
-      );
-      toast.promise(resolveAfter3Sec, {
+      const promise = new Promise(resolve => {
+        calculateDeductions(userFunds, amount);
+        setTimeout(resolve, 1000)
+      })
+      toast.promise(promise, {
         pending: 'Calculating Deductions',
         success: 'Deductions Calculated',
         error: 'Not Enough Funds'
       });
     }, 100);
-
-    setRecipient('');
-    setAmount(0);
-    setCurrency('USDC');
   };
   return (
     <div className="w-[694px] bg-[#00000000] rounded-[24px] p-6 flex flex-col gap-4">
@@ -43,6 +45,7 @@ const TransferSection = () => {
         <h3 className="text-start text-[21px]">Type Recipient</h3>
         <input
           onChange={(e) => {
+            console.log(e.target.value)
             setRecipient(e.target.value);
           }}
           value={recipient}
@@ -86,17 +89,10 @@ const TransferSection = () => {
               placeholder="Type amount"
               className="w-[100%]  p-[9px] rounded-[12px] m-[3px] border-[0.3px] border-solid border-[#BDCFD0]"
             />
-            <select
-              onChange={(e) => {
-                setCurrency(e.target.value);
-              }}
-              value={currency}
-              name="dropdown"
-              className="rounded-[12px] m-[3px] border-[0.3px] border-solid border-[#BDCFD0] hover:text-[18px] hover:px-[4px]"
+            <div className="rounded-[12px] m-[3px] border-[0.3px] border-solid border-[#BDCFD0] hover:text-[18px] hover:px-[4px]"
             >
-              <option value={'USDC'}>USDC</option>
-              {/* <option value={'FXD'}>FXD</option> */}
-            </select>
+              USDC
+            </div>
           </div>
           {/* btn */}
           <button
