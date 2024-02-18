@@ -19,7 +19,7 @@ const Navbar = () => {
         setUnreadNotifs(unreadNotifs + 1);
       }
     });
-  }, [notifs]);
+  }, [unreadNotifs]);
 
   const router = useRouter();
 
