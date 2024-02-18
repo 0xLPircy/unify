@@ -1,5 +1,5 @@
 import { CONTRACT_DETAILS } from "./types";
-import mainContractAbi from "./mainContract.json";
+import mainContractAbi from "./MainContract.json";
 import ierc20Abi from "./IERC20.json";
 
 const MainContract: CONTRACT_DETAILS = {
