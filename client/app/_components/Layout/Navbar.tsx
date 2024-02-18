@@ -13,13 +13,13 @@ const Navbar = () => {
   const [notifClicked, setNotifClicked] = useState(false);
   console.log(currentPage);
   const [unreadNotifs, setUnreadNotifs] = useState(0);
-  useEffect(() => {
-    notifs.map((notif) => {
-      if (notif.status == 'unread') {
-        setUnreadNotifs(unreadNotifs + 1);
-      }
-    });
-  }, [unreadNotifs]);
+  // useEffect(() => {
+  //   notifs.map((notif) => {
+  //     if (notif.status == 'unread') {
+  //       setUnreadNotifs(unreadNotifs + 1);
+  //     }
+  //   });
+  // }, [notifs]);
 
   const router = useRouter();
 

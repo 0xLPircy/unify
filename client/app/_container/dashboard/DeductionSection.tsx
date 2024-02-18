@@ -14,17 +14,13 @@ const DeductionSection = ({ signer }) => {
   const { sendTransaction } = useEthereum()
   const { deductions, recipient, amount, destinationChainId, deductionAmount, deductionChainId } = useAppContext()
 
-  useEffect(() => {
-    console.log("deductions:", deductions)
-  }, [deductions])
-
 
   const transferHandler = async () => {
     const contractInstance = new ethers.Contract(MainContract.contractAddress, MainContract.abi, signer)
     const bigNumberChainId = ethers.BigNumber.from(destinationChainId)
     const data = await contractInstance.populateTransaction.sendAssets(
       recipient,
-      amount,
+      parseUnits(amount.toString(), 'ether'),
       bigNumberChainId,
       deductionChainId,
       deductionAmount
