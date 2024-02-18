@@ -8,8 +8,11 @@ import React from 'react';
 import '@covalenthq/goldrush-kit/styles.css';
 import { GoldKitProvider } from '../_components';
 import Image from 'next/image';
+import { useEthereum } from '@particle-network/auth-core-modal';
+import { useAccount } from '@particle-network/connectkit';
 
 const WalletInfoPage = () => {
+  const account = useAccount()
   return (
     <div className="px-20 py-16 bg-[linear-gradient(299deg,_#FFFCEA_0%,_#FFF8D4_0.01%,_#F8FCFF_100%)]">
       <div className="z-30">
@@ -18,8 +21,9 @@ const WalletInfoPage = () => {
         </h1>
         <div className="test-class font-semibold mb-12">
           <TokenTransfersListView
-            chain_name="eth-sepolia" //chain name
-            address="0x27923CAB90564c5C195BbFb98f7DA8d3D4F751Fb" //sample address
+            chain_name={"avalanche-testnet"} //chain name
+            address={account} //sample address
+            contract_address="0x55104Ed9ab9f3b58dB55D60429091cA203302FaF"
           />
         </div>
       </div>
@@ -28,15 +32,15 @@ const WalletInfoPage = () => {
       </h1>
       <div className=" rounded-md font-semibold text-[#000000] p-6 test-class">
         <TokenBalancesListView
-          chain_names={['eth-sepolia', 'matic-mumbai']} // list of chains
-          address="0x27923CAB90564c5C195BbFb98f7DA8d3D4F751Fb" //sample address
+          chain_names={['eth-sepolia', 'matic-mumbai', 'avalanche-testnet']} // list of chains
+          address={account} //sample address
         />
       </div>
       <h1 className="text-start text-[36px] w-[100%] font-bold">NFTs</h1>
       <div className=" rounded-md font-semibold text-[#000000] p-6 test-class">
         <NFTWalletTokenListView
-          address="0xE98ed5C31094ff67b5668B2Ee6164D37B0Cdf40e" //sample address
-          chain_names={['eth-mainnet', 'eth-sepolia', 'matic-mumbai']} //sample list of chains
+          address={account} //sample address
+          chain_names={['eth-mainnet', 'eth-sepolia', 'matic-mumbai', 'avalanche-testnet']} //sample list of chains
         />
       </div>
       <Image

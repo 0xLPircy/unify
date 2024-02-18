@@ -71,7 +71,7 @@ const GetStartedPage = () => {
               height={900}
             />
             <div className="z-10">
-              <ConnectWallet />
+              <ConnectWallet style={"hover:shadow-[0px_6px_0px_0px_#091D31] h-fit rounded-[8px] px-12 py-3 flex gap-4 justify-center border-[1px] border-solid border-[#091D31] bg-[#f1f1f1] text-[24px] text-center"} isNav={true} />
             </div>
             <Image
               src={'/landing32.png'}

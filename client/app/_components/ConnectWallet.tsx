@@ -3,7 +3,7 @@ import { ConnectButton } from '@particle-network/connectkit';
 import '@particle-network/connectkit/dist/index.css';
 import Image from 'next/image';
 
-const ConnectWallet = () => {
+const ConnectWallet = ({ style, isNav }) => {
   return (
     <ConnectButton.Custom>
       {({
@@ -19,15 +19,15 @@ const ConnectWallet = () => {
             <button
               onClick={openConnectModal}
               disabled={!!account}
-              className="text-[18px] font-normal bg-[#48637C] text-[#ffffff] hover:shadow-[0px_6px_0px_0px_#091D31] h-fit w-fit rounded-[8px] px-8 py-2 flex gap-4 justify-center border-[1px] border-solid border-[#091D31] z-50"
+              className={style}
             >
-              {/* <Image
+              {isNav && (<Image
                 src={'/wallet.svg'}
                 alt="login email"
                 height={40}
                 width={40}
                 className="self-center"
-              /> */}
+              />)}
               <h3 className="text-[24px] self-center">Connect</h3>
             </button>
             {/* <br />
