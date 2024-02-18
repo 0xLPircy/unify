@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer } from '../_components';
 import Image from 'next/image';
 import { DeductionSection, FundsSection, TransferSection } from '../_container';
@@ -8,10 +8,14 @@ import { useCovalent, useSearch } from '@covalenthq/goldrush-kit';
 import { useAccount, useAccountInfo } from '@particle-network/connectkit';
 import { useRouter } from 'next/navigation';
 import { getSmartAccountAddress } from '@particle-network/auth-core';
+import { useEthereum } from '@particle-network/auth-core-modal';
+import { Web3Provider } from '@ethersproject/providers';
 
 const DashboardPage = () => {
+  const [signer, setSigner] = useState(null)
   const account = useAccount();
   const router = useRouter();
+  const { provider } = useEthereum()
 
   useEffect(() => {
     if (!account) {
@@ -25,6 +29,10 @@ const DashboardPage = () => {
       // console.log("user>>>>>>", user)
     })()
   }, [account, router])
+  useEffect(() => {
+    const ethSigner = new Web3Provider(provider).getSigner()
+    setSigner(ethSigner)
+  }, [provider, account])
   return (
     <>
       <div className="z-0 w-[100vw] h-[91vh] flex flex-col bg-[linear-gradient(299deg,_#FFFCEA_0%,_#FFF8D4_0.01%,_#F8FCFF_100%)]">
@@ -39,7 +47,7 @@ const DashboardPage = () => {
           <FundsSection />
           <TransferSection />
 
-          <DeductionSection />
+          <DeductionSection signer={signer} />
         </div>
       </div>
     </>

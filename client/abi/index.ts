@@ -16,7 +16,7 @@ const IERC20: CONTRACT_DETAILS = {
     abi: ierc20Abi.abi,
 };
 
-exports = {
+export {
     MainContract,
     IERC20,
 };
