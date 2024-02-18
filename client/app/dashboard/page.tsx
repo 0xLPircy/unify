@@ -1,21 +1,28 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Footer } from '../_components';
+import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { DeductionSection, FundsSection, TransferSection } from '../_container';
-import GoldRushComp from '../_components/Dashboard/GoldRushComp';
-import { useCovalent, useSearch } from '@covalenthq/goldrush-kit';
-import { useAccount, useAccountInfo } from '@particle-network/connectkit';
 import { useRouter } from 'next/navigation';
-import { getSmartAccountAddress } from '@particle-network/auth-core';
 import { useEthereum } from '@particle-network/auth-core-modal';
 import { Web3Provider } from '@ethersproject/providers';
+import { getTokenBalances } from '../api';
+import usePolling from '../hooks/usePolling';
+import { useAccount } from '@particle-network/connectkit';
 
 const DashboardPage = () => {
   const [signer, setSigner] = useState(null)
-  const account = useAccount();
   const router = useRouter();
+  const account = useAccount()
   const { provider } = useEthereum()
+  const [userFunds, setUserFunds] = useState([])
+
+  const fetchFunds = useCallback(async () => {
+    const res = await getTokenBalances(account);
+    setUserFunds(res)
+    return res
+  }, [account])
+
+  usePolling(fetchFunds)
 
   useEffect(() => {
     if (!account) {
@@ -43,9 +50,9 @@ const DashboardPage = () => {
           alt="bg"
           className="absolute top-[100px] opacity-75 self-center z-0"
         />
-        <div className="flex flex-row pt-0 z-10 h-[100%]">
-          <FundsSection />
-          <TransferSection />
+        <div className="flex flex-row pt-0 z-10 h-[100%] justify-between px-10">
+          <FundsSection userFunds={userFunds} />
+          <TransferSection userFunds={userFunds} />
 
           <DeductionSection signer={signer} />
         </div>

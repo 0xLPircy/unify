@@ -1,24 +1,9 @@
 "use client"
 import { ChainFund, TotalFunds } from '@/app/_components';
 import { chains } from '@/app/_lib/constants';
-import { getTokenBalances } from '@/app/api';
-import usePolling from '@/app/hooks/usePolling';
-import { useEthereum } from '@particle-network/auth-core-modal';
 import Image from 'next/image';
-import React, { useCallback, useState } from 'react';
 
-const FundsSection = () => {
-  const [userFunds, setUserFunds] = useState([])
-  const { address } = useEthereum()
-
-  const fetchFunds = useCallback(async () => {
-    const res = await getTokenBalances(address);
-    setUserFunds(res)
-    return res
-  }, [address])
-
-  usePolling(fetchFunds)
-
+const FundsSection = ({ userFunds }) => {
 
   return (
     <div className="flex flex-col gap-4 self-start place-self-end p-4 max-h-[100%] items-start justify-start">
@@ -33,7 +18,7 @@ const FundsSection = () => {
           height={24}
         />
         <h3 className=" text-[24px] self-center place-self-start">
-          {chains.length} chains in total
+          {chains.length} chains supported
         </h3>
       </div>
       {/* chains and their funds */}

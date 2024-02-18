@@ -1,25 +1,36 @@
 'use client';
-import { MainContract } from '@/abi';
+import { IERC20, MainContract } from '@/abi';
 import { ChainSubtotal, DeductionTotal } from '@/app/_components';
-import { chains, deductions } from '@/app/_lib/constants';
-import { Web3Provider } from '@ethersproject/providers';
+import { useAppContext } from '@/app/hooks/context/AppContext';
+import { parseUnits } from '@ethersproject/units';
 import { useEthereum } from '@particle-network/auth-core-modal';
 import { ethers } from 'ethers';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const DeductionSection = ({ signer }) => {
   const { sendTransaction } = useEthereum()
+  const { deductions, recipient, amount, destinationChainId, deductionAmount, deductionChainId } = useAppContext()
 
+  useEffect(() => {
+    console.log("deductions:", deductions)
+  }, [deductions])
 
 
   const transferHandler = async () => {
     const contractInstance = new ethers.Contract(MainContract.contractAddress, MainContract.abi, signer)
-    const data = await contractInstance.populateTransaction.setTreasuryCrossChain(
-      "0x74dc19725cC7E6d81f762adD93bA7f508eAaB454"
+    const bigNumberChainId = ethers.BigNumber.from(destinationChainId)
+    const data = await contractInstance.populateTransaction.sendAssets(
+      recipient,
+      amount,
+      bigNumberChainId,
+      deductionChainId,
+      deductionAmount
     )
+    // const contractInstance = new ethers.Contract(IERC20.contractAddress, IERC20.abi, signer)
+    // const data = await contractInstance.populateTransaction.approve("0x35343628C66991404ecE443083b90B0d1CDDe4Fa", parseUnits("1000000000000000", 'ether'))
     // await contractInstance.populateTransaction.sendAssets("0x79fDC8EC923aE2d6B0CC3757b476422e01DAbE7d", 200, 80001, [], [])
     console.log(">>>>>>>>>>>>>>>>>. data", data)
     // TRANSFER CLICKED
@@ -27,7 +38,7 @@ const DeductionSection = ({ signer }) => {
       to: MainContract.contractAddress,
       data: data.data
     })
-    console.log(txnx)
+    console.log("transaction", txnx)
     setTimeout(() => {
       // FUNCTION FOR TRANSFER
       // INTEGRA
@@ -62,8 +73,8 @@ const DeductionSection = ({ signer }) => {
             className="flex flex-col overflow-y-scroll max-h-[210px] 
           rounded-md mb-[6px] border-[0.1px] border-solid border-[#000000]"
           >
-            {deductions.map((chain) => (
-              <ChainSubtotal chain={chain} key={chain.chain} />
+            {deductions && deductions.map((chain, index) => (
+              <ChainSubtotal chain={chain} key={index} />
             ))}
           </div>
         </div>
