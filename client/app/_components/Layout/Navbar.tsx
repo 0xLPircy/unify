@@ -21,18 +21,21 @@ const Navbar = () => {
     });
   }, [notifs]);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleRedirectHome = () => {
-    router.push('/')
-  }
+    router.push('/');
+  };
 
   const authCore = useAuthCore();
 
   return (
     <div className="w-[100vw] flex flex-row items-center justify-between py-[6px] pl-32 pr-20 border-b-[1px] border-solid border-[#1c1b1f] bg-[#f1f1f1] z-40">
       {/* logo name */}
-      <div className="self-center place-self-start grid grid-flow-col gap-[10px] w-fit" onClick={handleRedirectHome}>
+      <div
+        className="self-center place-self-start grid grid-flow-col gap-[10px] w-fit"
+        onClick={handleRedirectHome}
+      >
         <Image
           src={'/logo.svg'}
           alt="logo"
@@ -45,25 +48,24 @@ const Navbar = () => {
       {/* nav name notif */}
       {(currentPage == '/dashboard' ||
         currentPage == '/mynfts' ||
-        currentPage == '/chat') && (
+        currentPage == '/walletInfo') && (
           <div className="grid grid-flow-col gap-8 self-center place-self-end">
             {/* nav items */}
             <div className="grid grid-flow-col self-center place-self-center pl-8 gap-8">
-              {/* <Link
-              href={'/'}
-              className={`text-[21px] hover:border-b-2 hover:font-semibold hover:cursor-pointer
-            ${
-              currentPage == '/chat' ? 'border-b-2' : ''
-            } border-solid border-[#1c1b1f]`}
-            >
-              Chat
-            </Link> */}
               <Link
                 href={'/dashboard'}
                 className={`text-[21px] hover:border-b-2 hover:font-semibold hover:cursor-pointer ${currentPage == '/dashboard' ? 'border-b-2' : ''
                   } border-solid border-[#1c1b1f]`}
               >
                 Transfer
+              </Link>
+              <Link
+                href={'/walletInfo'}
+                className={`text-[21px] hover:border-b-2 hover:font-semibold hover:cursor-pointer
+            ${currentPage == '/walletInfo' ? 'border-b-2' : ''
+                  } border-solid border-[#1c1b1f]`}
+              >
+                Info
               </Link>
               {/* <Link
               href={'/mynfts'}
@@ -93,7 +95,7 @@ const Navbar = () => {
               {/* notif */}
               <div
                 className="px-5 grid grid-flow-col gap-[10px] bg-[#48637C] hover:font-normal hover:opacity-75 py-[6px] rounded-r-full text-[#ffffff] hover:cursor-pointer"
-                onClick={() => setNotifClicked(!notifClicked)}
+                onClick={() => authCore.openWallet()}
               >
                 <Image
                   src={'/notifications.png'}
@@ -149,11 +151,11 @@ const Navbar = () => {
           Get Started
         </Link>
       )}
-      {
-        currentPage == '/getStarted' && <div>
+      {currentPage == '/getStarted' && (
+        <div>
           <ConnectWallet />
         </div>
-      }
+      )}
       {/* {(currentPage == '/create' ||
         currentPage == '/login' ||
         currentPage == '/loader') && (

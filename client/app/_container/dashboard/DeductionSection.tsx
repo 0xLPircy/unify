@@ -1,15 +1,33 @@
 'use client';
+import { MainContract } from '@/abi';
 import { ChainSubtotal, DeductionTotal } from '@/app/_components';
 import { chains, deductions } from '@/app/_lib/constants';
+import { Web3Provider } from '@ethersproject/providers';
+import { useEthereum } from '@particle-network/auth-core-modal';
+import { ethers } from 'ethers';
 import Image from 'next/image';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const DeductionSection = () => {
-  const transferHandler = () => {
-    // TRANSFER CLICKED
+const DeductionSection = ({ signer }) => {
+  const { sendTransaction } = useEthereum()
 
+
+
+  const transferHandler = async () => {
+    const contractInstance = new ethers.Contract(MainContract.contractAddress, MainContract.abi, signer)
+    const data = await contractInstance.populateTransaction.setTreasuryCrossChain(
+      "0x74dc19725cC7E6d81f762adD93bA7f508eAaB454"
+    )
+    // await contractInstance.populateTransaction.sendAssets("0x79fDC8EC923aE2d6B0CC3757b476422e01DAbE7d", 200, 80001, [], [])
+    console.log(">>>>>>>>>>>>>>>>>. data", data)
+    // TRANSFER CLICKED
+    const txnx = await sendTransaction({
+      to: MainContract.contractAddress,
+      data: data.data
+    })
+    console.log(txnx)
     setTimeout(() => {
       // FUNCTION FOR TRANSFER
       // INTEGRA
@@ -52,8 +70,8 @@ const DeductionSection = () => {
         {/* deduction total */}
         <DeductionTotal deductions={deductions} />
         <button
-          onClick={() => {
-            transferHandler();
+          onClick={async () => {
+            await transferHandler();
           }}
           className="mt-2 w-[100%] text-[21px] font-normal 
           bg-[#0BD262] text-[#000000] 

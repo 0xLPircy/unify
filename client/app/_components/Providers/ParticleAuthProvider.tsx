@@ -1,4 +1,5 @@
 "use client"
+import { USDC_ADDRESS } from '@/app/api/constant';
 import { AvalancheTestnet, EthereumSepolia, PolygonMumbai } from '@particle-network/chains';
 import { ModalProvider } from '@particle-network/connectkit';
 import '@particle-network/connectkit/dist/index.css';
@@ -15,16 +16,19 @@ const ParticleAuthProvider = ({ children }: { children: React.ReactNode }) => {
             connectors: [
                 ...evmWallets({ projectId: "2f6b4ed8651cde26d63d26308aa7edb4", showQrModal: true }),
             ],
-            erc4337: { //optional: account abstraction wallet UI config (displaying the smart account rather than EOA)
-                name: "SIMPLE",
-                version: "1.0.0"
-            },
+            // erc4337: { //optional: account abstraction wallet UI config (displaying the smart account rather than EOA)
+            //     name: "SIMPLE",
+            //     version: "1.0.0"
+            // },
             wallet: { //optional: particle wallet config
                 visible: true,
                 customStyle: {
                     supportChains: [AvalancheTestnet, EthereumSepolia, PolygonMumbai],
-                    fiatCoin: 'USD'
-                },
+                    fiatCoin: 'USD',
+                    displayTokenAddresses: [USDC_ADDRESS.toLocaleLowerCase()],
+                    supportAddToken: true,
+                    evmSupportWalletConnect: true
+                }, preload: true, topMenuType: 'close'
                 // entryPosition: 
             },
             promptSettingConfig: { //optional: particle security account config
