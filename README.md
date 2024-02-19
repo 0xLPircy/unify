@@ -1,12 +1,12 @@
 ![1-min.png](https://cdn.dorahacks.io/static/files/18dbed88495df63c795884f48739066c.png)
-
+<a target="_blank" href="https://dorahacks.io/buidl/10279"><img src="https://cdn.dorahacks.io/images/buidl-embed/light-simple.png" height="33" width="84" /></a>
 # Current Scenario
 In the current web3 phase, we are used to having complex UX for sending funds to anyone.
 This works for those who have been in the space for a long time (crypto-native) but for those who are not into the space and have no knowledge of tech, missing out on the power they can have using blockchain technology. 
 
 We brought you **Grandma's Phone** to solve this significant mass adoption issue, starting with a minimal but most crucial function: _SENDING FUNDS_*.
 
-[![Dashboard Image](./dashboard.png)](https://www.youtube.com/embed/dcpv2h0guv4)
+[![Dashboard Image](./assets/dashboard.png)](https://www.youtube.com/embed/dcpv2h0guv4)
 
 
 # Overview
