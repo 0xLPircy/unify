@@ -6,7 +6,8 @@ This works for those who have been in the space for a long time (crypto-native) 
 
 We brought you **Grandma's Phone** to solve this significant mass adoption issue, starting with a minimal but most crucial function: _SENDING FUNDS_*.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dcpv2h0guv4?si=WAvoVLzyDypkajLI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![Dashboard Image](./dashboard.png)](https://www.youtube.com/embed/dcpv2h0guv4)
+
 
 # Overview
 
